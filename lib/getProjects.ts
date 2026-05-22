@@ -5,10 +5,14 @@ import matter from "gray-matter";
 export interface ProjectFrontmatter {
   title: string;
   client: string;
+  techStack: string;
   date: string;
   role: string;
   liveUrl: string;
   repoUrl: string;
+  brandColor?: string;
+  logoPath?: string;
+  logoScale?: number;
 }
 
 export interface Project {
@@ -22,6 +26,7 @@ const CONTENT_DIR = path.join(process.cwd(), "content");
 const REQUIRED_FRONTMATTER_KEYS: (keyof ProjectFrontmatter)[] = [
   "title",
   "client",
+  "techStack",
   "date",
   "role",
   "liveUrl",
@@ -31,6 +36,24 @@ const REQUIRED_FRONTMATTER_KEYS: (keyof ProjectFrontmatter)[] = [
 function normalizeDate(value: unknown): string {
   if (value instanceof Date) {
     return value.toISOString().slice(0, 10);
+  }
+
+  return String(value);
+}
+
+function parseOptionalNumber(value: unknown): number | undefined {
+  if (value === undefined || value === null || value === "") {
+    return undefined;
+  }
+
+  const parsed = Number(value);
+
+  return Number.isFinite(parsed) ? parsed : undefined;
+}
+
+function parseOptionalString(value: unknown): string | undefined {
+  if (value === undefined || value === null || value === "") {
+    return undefined;
   }
 
   return String(value);
@@ -48,10 +71,14 @@ function parseFrontmatter(data: Record<string, unknown>, filename: string): Proj
   return {
     title: String(data.title),
     client: String(data.client),
+    techStack: String(data.techStack),
     date: normalizeDate(data.date),
     role: String(data.role),
     liveUrl: String(data.liveUrl),
     repoUrl: String(data.repoUrl),
+    brandColor: parseOptionalString(data.brandColor),
+    logoPath: parseOptionalString(data.logoPath),
+    logoScale: parseOptionalNumber(data.logoScale),
   };
 }
 

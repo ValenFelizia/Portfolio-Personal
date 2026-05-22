@@ -25,7 +25,7 @@ Referencia principal: `specs.md`. Hoja de ruta: `todo.md`. Respetar las fases: n
 
 ## Frontmatter obligatorio (cada `.mdx`)
 
-`title`, `client`, `date`, `role`, `liveUrl`, `repoUrl`
+`title`, `client`, `techStack`, `date`, `role`, `liveUrl`, `repoUrl`
 
 ## Cuerpo MDX (casos de estudio)
 
