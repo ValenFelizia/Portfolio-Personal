@@ -1,4 +1,5 @@
 import { AboutMinimal } from "@/components/AboutMinimal";
+import { Contact } from "@/components/Contact";
 import { Hero } from "@/components/Hero";
 import { ProjectCard } from "@/components/ProjectCard";
 import { getProjects } from "@/lib/getProjects";
@@ -11,28 +12,39 @@ export default async function Home() {
       <Hero />
 
       <section
+        id="proyectos"
         aria-label="Proyectos"
-        className="mx-auto w-full max-w-6xl px-6 pb-24 pt-8 sm:pb-32 sm:pt-12"
+        className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 pb-24 pt-8 sm:pb-32 sm:pt-12"
       >
+        <p className="mb-8 text-sm uppercase tracking-widest text-muted">
+          Trabajos destacados
+        </p>
+
         <div className="grid gap-8 md:grid-cols-2">
-          {projects.map((project) => (
-            <ProjectCard
+          {projects.map((project, index) => (
+            <div
               key={project.slug}
-              slug={project.slug}
-              title={project.frontmatter.title}
-              client={project.frontmatter.client}
-              techStack={project.frontmatter.techStack}
-              liveUrl={project.frontmatter.liveUrl}
-              imageSrc={`/${project.slug}-preview.webp`}
-              brandColor={project.frontmatter.brandColor}
-              logoPath={project.frontmatter.logoPath}
-              logoScale={project.frontmatter.logoScale}
-            />
+              className="motion-safe:animate-fade-in-up"
+              style={{ animationDelay: `${index * 120}ms` }}
+            >
+              <ProjectCard
+                slug={project.slug}
+                title={project.frontmatter.title}
+                client={project.frontmatter.client}
+                techStack={project.frontmatter.techStack}
+                liveUrl={project.frontmatter.liveUrl}
+                imageSrc={`/${project.slug}-preview.webp`}
+                brandColor={project.frontmatter.brandColor}
+                logoPath={project.frontmatter.logoPath}
+                logoScale={project.frontmatter.logoScale}
+              />
+            </div>
           ))}
         </div>
       </section>
 
       <AboutMinimal imageSrc="/profile.webp" />
+      <Contact />
     </main>
   );
 }

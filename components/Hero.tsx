@@ -1,5 +1,3 @@
-const HERO_EMAIL = "tu-email@ejemplo.com";
-
 export function Hero() {
   return (
     <section className="relative mx-auto w-full max-w-4xl overflow-hidden px-6 py-28 motion-safe:animate-fade-in-up sm:py-36">
@@ -17,7 +15,7 @@ export function Hero() {
         </p>
 
         <a
-          href={`mailto:${HERO_EMAIL}`}
+          href="#contacto"
           className="mt-12 inline-flex items-center justify-center rounded-full border border-accent/40 bg-accent/10 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-accent hover:bg-accent/20 hover:text-white motion-safe:hover:-translate-y-0.5"
         >
           Hablemos de tu proyecto

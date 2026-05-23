@@ -8,7 +8,10 @@ export function AboutMinimal({
   imageAlt = "Foto profesional",
 }: AboutMinimalProps) {
   return (
-    <section className="mx-auto w-full max-w-5xl px-6 py-24 motion-safe:animate-fade-in-up motion-safe:[animation-delay:200ms] sm:py-32">
+    <section
+      id="sobre-mi"
+      className="mx-auto w-full max-w-5xl scroll-mt-24 px-6 py-24 motion-safe:animate-fade-in-up motion-safe:[animation-delay:200ms] sm:py-32"
+    >
       <div className="grid items-center gap-12 md:grid-cols-[minmax(0,11rem)_1fr] md:gap-16">
         <div className="mx-auto w-full max-w-[11rem] md:mx-0">
           {imageSrc ? (
