@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NavAnchorLink } from "@/components/NavAnchorLink";
 
 const navLinks = [
   { href: "/#proyectos", label: "Proyectos" },
@@ -21,12 +22,11 @@ export function Header() {
           <ul className="flex items-center gap-6 sm:gap-8">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link
+                <NavAnchorLink
                   href={link.href}
+                  label={link.label}
                   className="text-sm text-muted transition-colors duration-300 hover:text-accent"
-                >
-                  {link.label}
-                </Link>
+                />
               </li>
             ))}
           </ul>

@@ -40,13 +40,13 @@ export function AboutMinimal({
               problemas de negocio antes de escribir una sola línea de código.
               Eso me llevó al desarrollo web con un enfoque distinto: entender
               el proceso, identificar la necesidad real y recién ahí construir la
-              solución.
+              solución, que abarca desde el diseño hasta el desarrollo y la implementación/lanzamiento.
             </p>
             <p>
               Trabajo en sitios rápidos, e-commerces escalables y productos
               digitales que priorizan resultados concretos: menos fricción
               operativa, más confianza del usuario y decisiones técnicas que
-              tengan sentido para el negocio.
+              tengan sentido para el cliente.
             </p>
           </div>
         </div>
