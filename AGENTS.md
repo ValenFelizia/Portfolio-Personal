@@ -4,7 +4,7 @@
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 <!-- END:nextjs-agent-rules -->
 
-# Portfolio Personal — Guía para agentes
+# Portfolio Personal — Guía para agentes(desactualizada parcialmente, estas instrucciones son de cuando iniciamos el proyecto en Mayo)
 
 Referencia principal: `specs.md`. Hoja de ruta: `todo.md`. Respetar las fases: no adelantar UI (Fase 3+) ni rutas (Fase 4+) si la tarea actual es de datos o setup.
 

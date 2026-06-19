@@ -7,11 +7,17 @@ export function Hero() {
       />
 
       <div className="relative z-10 flex flex-col items-center text-center">
-        <p className="text-balance text-3xl font-medium leading-tight tracking-tight text-foreground sm:text-4xl sm:leading-tight">
+        <h1 className="text-balance text-3xl font-medium leading-tight tracking-tight text-foreground sm:text-4xl sm:leading-tight">
           Desarrollo web enfocado en{" "}
           <span className="text-gradient-accent">procesos y negocio</span>.
-          Construyo sitios rápidos y comercios electrónicos escalables que entregan
-          resultados reales.
+          Ayudo a negocios locales a vender
+          mejor y generar confianza con una web rápida y fácil de usar.
+        </h1>
+
+        <p className="mt-6 max-w-2xl text-balance text-base leading-relaxed text-muted sm:text-lg">
+          Trabajo con emprendimientos que venden por WhatsApp, comercios que
+          necesitan un catálogo online y marcas que buscan una presencia digital
+          clara y confiable.
         </p>
 
         <a

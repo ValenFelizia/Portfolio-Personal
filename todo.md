@@ -95,18 +95,24 @@
 
 ### Fase 8: Posicionamiento Comercial de la Home
 
-- [ ] **Hero** — convertir la frase principal en un `h1` claro, específico y orientado a clientes
-- [ ] **Hero** — agregar subtítulo que explique para quién trabajo:
-  - [ ] Negocios locales
-  - [ ] Emprendimientos que venden por WhatsApp
-  - [ ] Marcas que necesitan presencia digital confiable
-- [ ] **Hero** — mantener CTA principal hacia contacto, con foco en WhatsApp / primera charla
-- [ ] **Home** — agregar sección breve de oferta o proceso:
-  - [ ] Entender el negocio
-  - [ ] Diseñar el flujo
-  - [ ] Construir y lanzar
-- [ ] **AboutMinimal** — reescribir el texto para traducir "ingeniería y procesos" a beneficios concretos para el cliente
-- [ ] **Home** — evitar wording que sugiera una cartera grande de clientes externos; presentar los casos como proyectos reales y publicados
+- [x] **Hero** — convertir la frase principal en un `h1` claro, específico y orientado a clientes
+  > Implementado: `h1` orientado a clientes con gradiente en "negocios locales".
+- [x] **Hero** — agregar subtítulo que explique para quién trabajo:
+  - [x] Negocios locales
+  - [x] Emprendimientos que venden por WhatsApp
+  - [x] Marcas que necesitan presencia digital confiable
+  > Subtítulo en párrafo `text-muted` debajo del `h1`.
+- [x] **Hero** — mantener CTA principal hacia contacto, con foco en WhatsApp / primera charla
+  > CTA "Charlemos de tu proyecto" apunta a `#contacto` (WhatsApp destacado queda para Fase 10).
+- [x] **Home** — agregar sección breve de oferta o proceso:
+  - [x] Entender el negocio
+  - [x] Diseñar el flujo
+  - [x] Construir y lanzar
+  > Nuevo componente `ProcessOffer.tsx`, insertado entre Hero y proyectos.
+- [x] **AboutMinimal** — reescribir el texto para traducir "ingeniería y procesos" a beneficios concretos para el cliente
+  > Nuevo `h2` y párrafos enfocados en beneficios operativos y decisiones técnicas sin comisiones.
+- [x] **Home** — evitar wording que sugiera una cartera grande de clientes externos; presentar los casos como proyectos reales y publicados
+  > Línea intro bajo "Trabajos destacados" en `page.tsx`.
 
 ### Fase 9: Casos de Estudio con Evidencia Observable
 

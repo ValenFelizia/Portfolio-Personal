@@ -32,21 +32,21 @@ export function AboutMinimal({
         <div className="space-y-5 text-center md:text-left">
           <p className="text-sm uppercase tracking-widest text-muted">Sobre mí</p>
           <h2 className="text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
-            Ingeniería y procesos antes que código
+            Entiendo tu negocio antes de escribir código
           </h2>
           <div className="space-y-4 text-base leading-relaxed text-muted">
             <p>
-              Vengo de un background en ingeniería, donde aprendí a mirar los
-              problemas de negocio antes de escribir una sola línea de código.
-              Eso me llevó al desarrollo web con un enfoque distinto: entender
-              el proceso, identificar la necesidad real y recién ahí construir la
-              solución, que abarca desde el diseño hasta el desarrollo y la implementación/lanzamiento.
+              Vengo de un background en ingeniería, donde aprendí a analizar procesos y detectar
+              el problema real antes de proponer una solución. Eso me llevó al
+              desarrollo web con un enfoque distinto: primero entender cómo opera
+              tu negocio, después diseñar y construir algo que tenga sentido en
+              el día a día.
             </p>
             <p>
-              Trabajo en sitios rápidos, e-commerces escalables y productos
-              digitales que priorizan resultados concretos: menos fricción
-              operativa, más confianza del usuario y decisiones técnicas que
-              tengan sentido para el cliente.
+              Desarrollo sitios rápidos, catálogos y e-commerces pensados para
+              resultados concretos: menos fricción operativa, más confianza del
+              cliente final y decisiones técnicas que no te atan a comisiones ni
+              herramientas que no necesitás.
             </p>
           </div>
         </div>
