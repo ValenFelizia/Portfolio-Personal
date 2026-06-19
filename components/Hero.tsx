@@ -10,7 +10,7 @@ export function Hero() {
         <p className="text-balance text-3xl font-medium leading-tight tracking-tight text-foreground sm:text-4xl sm:leading-tight">
           Desarrollo web enfocado en{" "}
           <span className="text-gradient-accent">procesos y negocio</span>.
-          Construyo sitios rápidos y e-commerces escalables que entregan
+          Construyo sitios rápidos y comercios electrónicos escalables que entregan
           resultados reales.
         </p>
 

@@ -89,6 +89,113 @@
 
 ---
 
+## V1.1: Auditoría Comercial y Pulido Público
+
+> Nueva etapa posterior a la V1.0. Objetivo: convertir el portfolio en una herramienta comercial más clara para clientes reales, sin perder la prolijidad técnica necesaria para publicarlo como repo.
+
+### Fase 8: Posicionamiento Comercial de la Home
+
+- [ ] **Hero** — convertir la frase principal en un `h1` claro, específico y orientado a clientes
+- [ ] **Hero** — agregar subtítulo que explique para quién trabajo:
+  - [ ] Negocios locales
+  - [ ] Emprendimientos que venden por WhatsApp
+  - [ ] Marcas que necesitan presencia digital confiable
+- [ ] **Hero** — mantener CTA principal hacia contacto, con foco en WhatsApp / primera charla
+- [ ] **Home** — agregar sección breve de oferta o proceso:
+  - [ ] Entender el negocio
+  - [ ] Diseñar el flujo
+  - [ ] Construir y lanzar
+- [ ] **AboutMinimal** — reescribir el texto para traducir "ingeniería y procesos" a beneficios concretos para el cliente
+- [ ] **Home** — evitar wording que sugiera una cartera grande de clientes externos; presentar los casos como proyectos reales y publicados
+
+### Fase 9: Casos de Estudio con Evidencia Observable
+
+- [ ] **Felisa** — reforzar el caso como catálogo vivo + pedidos por WhatsApp + autogestión + 0% comisiones
+- [ ] **787 Rumbos** — reforzar el caso como presencia oficial + confianza + punto de contacto verificable
+- [ ] **MDX** — agregar evidencia observable sin inventar métricas:
+  - [ ] Restricción inicial del negocio
+  - [ ] Decisión técnica tomada
+  - [ ] Resultado visible en producción
+  - [ ] Mejora concreta para el día a día del cliente
+- [ ] **MDX** — reducir frases demasiado absolutas si no hay números que las sostengan (`drásticamente`, `por completo`, etc.)
+- [ ] **Detalle de proyecto** — mostrar links a `liveUrl` y `repoUrl` desde el frontmatter
+- [ ] **Detalle de proyecto** — agregar CTA final: "¿Tenés un problema parecido?" + contacto
+- [ ] **ProjectCard** — evaluar invertir prioridad: card hacia caso de estudio y link secundario hacia sitio en vivo
+- [ ] **ProjectCard** — considerar una línea de impacto visible por proyecto
+
+### Fase 10: Conversión y Contacto
+
+- [ ] **Contact** — destacar WhatsApp como CTA principal, no como una tarjeta más
+- [ ] **Contact** — agregar mensaje prellenado de WhatsApp para bajar fricción
+- [ ] **Contact** — explicar el siguiente paso después del contacto:
+  - [ ] Primera charla breve
+  - [ ] Entender el negocio
+  - [ ] Detectar si una web realmente ayuda
+- [ ] **Contact** — revisar si GitHub debe seguir al mismo nivel que WhatsApp/Email/LinkedIn o pasar al footer
+- [ ] **Header** — revisar navegación mobile para que no se sienta apretada en pantallas chicas
+- [ ] **Footer** — considerar links secundarios a GitHub, LinkedIn y contacto
+
+### Fase 11: SEO Básico y Social Preview
+
+- [ ] **Metadata global** — agregar `metadataBase`, title template, description, Open Graph y Twitter Card
+- [ ] **Home** — ajustar metadata a clientes objetivo, sin perseguir SEO avanzado
+- [ ] **Detalle de proyecto** — implementar metadata por proyecto (`generateMetadata`)
+- [ ] **Detalle de proyecto** — agregar canonical por ruta
+- [ ] **SEO técnico** — generar `sitemap.xml`
+- [ ] **SEO técnico** — generar `robots.txt` propio
+- [ ] **Social preview** — crear o definir imagen Open Graph para compartir por WhatsApp / LinkedIn
+- [ ] **Dominio** — decidir si comprar dominio propio antes de usar el portfolio como carta principal
+
+### Fase 12: Accesibilidad, Mobile y Calidad Técnica
+
+- [ ] **Accesibilidad** — agregar skip link para saltar al contenido principal
+- [ ] **Accesibilidad** — revisar `aria-labelledby` en secciones principales
+- [ ] **Accesibilidad** — revisar foco visible en CTA del Hero y enlaces importantes
+- [ ] **UI** — revisar `py-21` en `Contact` y reemplazar si no pertenece a la escala de Tailwind
+- [ ] **UI** — revisar experiencia mobile del header, hero, cards y contacto
+- [ ] **Performance** — medir Lighthouse mobile y desktop después de los cambios
+- [ ] **Performance** — revisar peso/dimensiones de imágenes (`profile.webp`, previews, logos)
+- [ ] **Seguridad** — evaluar `_headers` para Cloudflare Pages:
+  - [ ] `X-Content-Type-Options`
+  - [ ] `Referrer-Policy`
+  - [ ] `Permissions-Policy`
+  - [ ] CSP conservadora si no genera fricción
+- [ ] **404** — considerar página `not-found.tsx` con estilo del portfolio
+
+### Fase 13: Repo Público y Documentación
+
+- [ ] **README** — reemplazar template de Next.js por documentación propia del proyecto
+- [ ] **README** — explicar objetivo, stack, arquitectura, SDD y cómo correr el proyecto
+- [ ] **README** — documentar cómo agregar un nuevo proyecto MDX
+- [ ] **README** — ajustar deploy a Cloudflare Pages (`npm run build` + output `out`)
+- [ ] **README** — aclarar que el portfolio prioriza clientes y usa GitHub como respaldo técnico
+- [ ] **Repo público** — limpiar assets default no usados (`vercel.svg`, `file.svg`, `window.svg`) si ya no hacen falta
+- [ ] **Repo público** — decidir licencia o nota de uso del código/diseño
+- [ ] **Specs** — mantener `specs.md` actualizado si cambia la estructura de datos o componentes
+- [ ] **Todo** — mantener esta V1.1 como checklist vivo para trabajar desde el IDE o con agentes
+
+### Fase 14: Verificación Final V1.1
+
+- [ ] Ejecutar lint
+- [ ] Ejecutar build estático
+- [ ] Verificar rutas:
+  - [ ] `/`
+  - [ ] `/proyectos/felisa`
+  - [ ] `/proyectos/rumbos`
+- [ ] Verificar links externos:
+  - [ ] WhatsApp
+  - [ ] Email
+  - [ ] LinkedIn
+  - [ ] GitHub
+  - [ ] Sitios en producción
+  - [ ] Repositorios
+- [ ] Verificar mobile manualmente
+- [ ] Verificar metadata al compartir la URL
+- [ ] Deploy final en Cloudflare Pages
+- [ ] Actualizar `todo.md` marcando tareas completadas
+
+---
+
 ## Deploy — Cloudflare Pages (V1.0)
 
 > Seguimiento del deployment, separado de las fases de desarrollo.

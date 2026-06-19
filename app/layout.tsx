@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Desarrollo Web",
+  title: "Valentín Felizia | Desarrollo Web",
   description:
-    "Desarrollo web enfocado en procesos y negocio. Construyo sitios rápidos y e-commerces escalables que entregan resultados reales.",
+    "Desarrollo web enfocado en procesos y negocio. Construyo sitios rápidos y comercios electrónicos escalables que entregan resultados reales.",
 };
 
 export default function RootLayout({
