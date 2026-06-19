@@ -33,7 +33,7 @@ export function ProcessOffer() {
           id="process-offer-heading"
           className="text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
         >
-          De la primera charla al sitio en vivo
+          De la primer charla al sitio en vivo
         </h2>
         <p className="mx-auto max-w-xl text-base leading-relaxed text-muted">
           Sin pasos innecesarios: entiendo el negocio, diseño el flujo y

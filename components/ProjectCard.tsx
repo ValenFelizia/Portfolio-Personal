@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 import type { CSSProperties } from "react";
 
 export interface ProjectCardProps {
@@ -12,6 +13,7 @@ export interface ProjectCardProps {
   brandColor?: string;
   logoPath?: string;
   logoScale?: number;
+  impact?: string;
 }
 
 function normalizeTechStack(techStack: string | string[]): string[] {
@@ -36,6 +38,7 @@ export function ProjectCard({
   brandColor,
   logoPath,
   logoScale,
+  impact,
 }: ProjectCardProps) {
   const stack = normalizeTechStack(techStack);
   const resolvedLogoScale = logoScale ?? 1;
@@ -72,6 +75,11 @@ export function ProjectCard({
           <h3 className="text-xl font-medium tracking-tight text-foreground">
             {title}
           </h3>
+          {impact && (
+            <p className="border-l-2 border-[var(--brand-color)] pl-3 text-sm leading-relaxed text-muted">
+              {impact}
+            </p>
+          )}
         </div>
 
         {stack.length > 0 && (
@@ -88,12 +96,15 @@ export function ProjectCard({
         )}
 
         <div className="relative z-10 mt-auto flex items-center justify-between gap-4 pt-2">
-          <Link
-            href={`/proyectos/${slug}`}
-            className="relative z-10 inline-flex cursor-pointer rounded-md px-2.5 py-1.5 -ml-2.5 text-sm text-accent transition-all duration-300 group-hover:bg-accent/10 group-hover:text-indigo-300 hover:bg-accent/15 hover:text-accent-hover hover:ring-1 hover:ring-accent/25"
+          <a
+            href={liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative z-10 inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 -ml-2.5 text-sm text-accent transition-all duration-300 group-hover:bg-accent/10 group-hover:text-indigo-300 hover:bg-accent/15 hover:text-accent-hover hover:ring-1 hover:ring-accent/25"
           >
-            Leer caso de estudio
-          </Link>
+            Visitar sitio publicado
+            <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+          </a>
 
           {logoPath && (
             <div
@@ -116,11 +127,9 @@ export function ProjectCard({
         </div>
       </div>
 
-      <a
-        href={liveUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Visitar ${title} en producción`}
+      <Link
+        href={`/proyectos/${slug}`}
+        aria-label={`Leer caso de estudio de ${title}`}
         className="absolute inset-0 z-[1] before:absolute before:inset-0 before:content-[''] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       />
     </article>

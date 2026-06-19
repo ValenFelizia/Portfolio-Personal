@@ -13,6 +13,8 @@ export interface ProjectFrontmatter {
   brandColor?: string;
   logoPath?: string;
   logoScale?: number;
+  summary?: string;
+  impact?: string;
 }
 
 export interface Project {
@@ -79,6 +81,8 @@ function parseFrontmatter(data: Record<string, unknown>, filename: string): Proj
     brandColor: parseOptionalString(data.brandColor),
     logoPath: parseOptionalString(data.logoPath),
     logoScale: parseOptionalNumber(data.logoScale),
+    summary: parseOptionalString(data.summary),
+    impact: parseOptionalString(data.impact),
   };
 }
 

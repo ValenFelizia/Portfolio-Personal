@@ -43,6 +43,7 @@ export default async function Home() {
                 brandColor={project.frontmatter.brandColor}
                 logoPath={project.frontmatter.logoPath}
                 logoScale={project.frontmatter.logoScale}
+                impact={project.frontmatter.impact}
               />
             </div>
           ))}

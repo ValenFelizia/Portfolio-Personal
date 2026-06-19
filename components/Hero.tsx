@@ -15,8 +15,8 @@ export function Hero() {
         </h1>
 
         <p className="mt-6 max-w-2xl text-balance text-base leading-relaxed text-muted sm:text-lg">
-          Trabajo con emprendimientos que venden por WhatsApp, comercios que
-          necesitan un catálogo online y marcas que buscan una presencia digital
+          Trabajo con emprendimientos que atienden por WhatsApp, comercios que
+          necesitan un catálogo/tienda online y marcas que buscan una presencia digital
           clara y confiable.
         </p>
 

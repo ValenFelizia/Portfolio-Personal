@@ -9,13 +9,19 @@ techStack: "Next.js, Sanity.io, Tailwind CSS, State Management"
 brandColor: "#ead6cc"
 logoPath: "/logos/felisa.svg"
 logoScale: 1.5
+impact: "Catálogo online + pedidos por WhatsApp, sin comisiones por venta"
 ---
 
 ## El Problema
-Felisa operaba todas sus ventas de forma manual a través de WhatsApp. El proceso se había convertido en un cuello de botella operativo: la gestión de "clientes vitrina" (que solo consultaban precios y catálogo sin comprar) consumía horas de atención al cliente diarias. Se evaluó en un inicio usar plataformas de E-Commerce con tiendas ya pre-hechas, pero los costos de mantenimiento y las comisiones por venta no eran viables para la estructura del negocio.
+
+Felisa vendía todo de forma manual por WhatsApp. Eso funcionaba, pero el proceso se volvió un cuello de botella: gran parte del día se iba en responder consultas de catálogo de personas que solo querían ver productos y precios sin comprar. Al mismo tiempo, se evaluaron plataformas de e-commerce con tiendas prearmadas, pero los costos de mantenimiento y las comisiones por venta no encajaban con la estructura del negocio.
 
 ## La Solución y Arquitectura
-Implementé una solución ágil y a medida, un "WhatsApp E-commerce" impulsado por un Headless CMS: En lugar de forzar al negocio a migrar a una pasarela de pagos compleja, digitalicé todo el proceso de selección y armado de carrito en la web. Una vez que el usuario elige sus productos, el sistema genera y formatea automáticamente un mensaje con el pedido directo al WhatsApp del negocio. Además, el Headless CMS (una plataforma separada de la página principal) le permite al cliente autogestionar su catálogo, precios y stock sin depender de mí ni tocar código.
+
+En lugar de forzar una pasarela de pagos compleja, construí un catálogo web donde el cliente elige productos y arma el carrito en la página. Al finalizar, el sistema genera y formatea un mensaje de pedido listo para enviar por WhatsApp. La dueña del negocio sigue cerrando ventas en el canal que ya conocía, pero sin repetir la misma información en cada conversación.
+
+Para que no dependiera de mí en cada cambio de precio o producto, integré un Headless CMS (Sanity) que le permite autogestionar catálogo, precios y stock sin tocar código. La decisión de no usar una tienda prearmada permitió mantener 0% de comisiones por venta y adaptar el flujo al negocio real.
 
 ## El Impacto
-Se eliminó por completo el cuello de botella en la atención al cliente, reduciendo drásticamente las horas invertidas en responder consultas manuales. El cliente obtuvo independencia total en la gestión de su catálogo, logró un flujo de ventas más rápido y, lo más importante, mantuvo un costo operativo de 0% en comisiones por venta.
+
+Hoy el catálogo está centralizado en la web: quien solo quiere ver productos y precios puede hacerlo sin escribir por WhatsApp. Los pedidos llegan con el detalle ya armado, lo que reduce la fricción en la atención diaria. La dueña del negocio gestiona catálogo, precios y stock desde el CMS sin depender de cambios en código. El modelo se mantiene sin comisiones por venta, a diferencia de las tiendas prearmadas que se evaluaron al inicio. Se puede verificar en [felisa-bay.vercel.app](https://felisa-bay.vercel.app/).

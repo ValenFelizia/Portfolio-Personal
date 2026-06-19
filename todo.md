@@ -116,18 +116,26 @@
 
 ### Fase 9: Casos de Estudio con Evidencia Observable
 
-- [ ] **Felisa** — reforzar el caso como catálogo vivo + pedidos por WhatsApp + autogestión + 0% comisiones
-- [ ] **787 Rumbos** — reforzar el caso como presencia oficial + confianza + punto de contacto verificable
-- [ ] **MDX** — agregar evidencia observable sin inventar métricas:
-  - [ ] Restricción inicial del negocio
-  - [ ] Decisión técnica tomada
-  - [ ] Resultado visible en producción
-  - [ ] Mejora concreta para el día a día del cliente
-- [ ] **MDX** — reducir frases demasiado absolutas si no hay números que las sostengan (`drásticamente`, `por completo`, etc.)
-- [ ] **Detalle de proyecto** — mostrar links a `liveUrl` y `repoUrl` desde el frontmatter
-- [ ] **Detalle de proyecto** — agregar CTA final: "¿Tenés un problema parecido?" + contacto
-- [ ] **ProjectCard** — evaluar invertir prioridad: card hacia caso de estudio y link secundario hacia sitio en vivo
-- [ ] **ProjectCard** — considerar una línea de impacto visible por proyecto
+- [x] **Felisa** — reforzar el caso como catálogo vivo + pedidos por WhatsApp + autogestión + 0% comisiones
+  > MDX reescrito con restricción (WhatsApp manual, comisiones), decisión (catálogo + CMS) y link verificable.
+- [x] **787 Rumbos** — reforzar el caso como presencia oficial + confianza + punto de contacto verificable
+  > MDX reescrito con dolor de confianza en turismo y landing como carta de presentación.
+- [x] **MDX** — agregar evidencia observable sin inventar métricas:
+  - [x] Restricción inicial del negocio
+  - [x] Decisión técnica tomada
+  - [x] Resultado visible en producción
+  - [x] Mejora concreta para el día a día del cliente
+  > Tejido en las 3 secciones de cada caso; links al sitio en vivo al final de El Impacto.
+- [x] **MDX** — reducir frases demasiado absolutas si no hay números que las sostengan (`drásticamente`, `por completo`, etc.)
+  > Eliminados términos absolutos en Felisa; tono honesto en ambos casos.
+- [x] **Detalle de proyecto** — mostrar links a `liveUrl` y `repoUrl` desde el frontmatter
+  > Botón primario "Ver sitio en producción" + link secundario "Código en GitHub" en cabecera.
+- [x] **Detalle de proyecto** — agregar CTA final: "¿Tenés un problema parecido?" + contacto
+  > Footer con CTA `/#contacto` al final del artículo.
+- [x] **ProjectCard** — evaluar invertir prioridad: card hacia caso de estudio y link secundario hacia sitio en vivo
+  > Overlay `Link` al caso de estudio; enlace visible "Ver sitio en vivo" externo.
+- [x] **ProjectCard** — considerar una línea de impacto visible por proyecto
+  > Campo `impact` en frontmatter + borde izquierdo con color de marca en la card.
 
 ### Fase 10: Conversión y Contacto
 
