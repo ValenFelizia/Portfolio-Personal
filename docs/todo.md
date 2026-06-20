@@ -244,15 +244,22 @@
 
 ### Fase 19: Casos y Prueba de Confianza
 
-- [ ] **Felisa** — revisar si el subdominio `vercel.app` debilita el caso
-- [ ] **Felisa** — evaluar dominio propio o aclarar que es un producto real en producción aunque no tenga dominio propio todavía
-- [ ] **Felisa** — reemplazar `role: "Tech Lead & Fullstack"` por una formulación más natural:
-  - [ ] "Diseño y desarrollo fullstack"
-  - [ ] "Desarrollo web integral"
-- [ ] **787 Rumbos** — hacer el impacto más concreto en card y/o caso
-- [ ] **Casos** — agregar `seoDescription` o `summary` dedicados si mejora metadata y previews
-- [ ] **Prueba social** — evaluar si tiene sentido agregar una cita breve, captura o nota de contexto sin forzar testimonios
-- [ ] **Prueba futura** — dejar previsto sumar nuevos proyectos a medida que aparezcan clientes externos
+> **Dominio Felisa:** producto en producción activa; dominio propio pendiente de decisión de la clienta. No se agrega disclaimer en el portfolio: el caso se apoya en uso real y en el link al catálogo.
+
+- [x] **Felisa** — revisar si el subdominio `vercel.app` debilita el caso
+  - **Resultado:** aceptable por ahora; `impact` y caso enfatizan "en producción" sin destacar el subdominio.
+- [x] **Felisa** — evaluar dominio propio o aclarar que es un producto real en producción aunque no tenga dominio propio todavía
+  - **Decisión:** sin nota especial; link como "catálogo en línea". Actualizar cuando haya dominio propio.
+- [x] **Felisa** — reemplazar `role: "Tech Lead & Fullstack"` por una formulación más natural:
+  - [x] Ya aplicado: `Desarrollo Fullstack`
+- [x] **787 Rumbos** — hacer el impacto más concreto en card y/o caso
+  - **Hecho:** impact con dominio; sección El Impacto con dominio propio y contacto verificable.
+- [x] **Casos** — agregar `seoDescription` o `summary` dedicados si mejora metadata y previews
+  - **Hecho:** `seoDescription` en Felisa y Rumbos.
+- [x] **Prueba social** — evaluar si tiene sentido agregar una cita breve, captura o nota de contexto sin forzar testimonios
+  - **Decisión:** no agregar testimonio inventado ni forzado; los casos + sitios en producción alcanzan por ahora.
+- [x] **Prueba futura** — dejar previsto sumar nuevos proyectos a medida que aparezcan clientes externos
+  - **Previsto:** flujo en `README.md` → "Adding a new case study" (`content/*.mdx` + previews).
 
 ### Fase 20: Oferta Más Clara
 
