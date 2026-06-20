@@ -3,6 +3,7 @@ import { AboutMinimal } from "@/components/AboutMinimal";
 import { Contact } from "@/components/Contact";
 import { Hero } from "@/components/Hero";
 import { ProcessOffer } from "@/components/ProcessOffer";
+import { ServiceOffer } from "@/components/ServiceOffer";
 import { ProjectCard } from "@/components/ProjectCard";
 import { getProjects } from "@/lib/getProjects";
 import { siteMetadata } from "@/lib/site";
@@ -26,6 +27,7 @@ export default async function Home() {
   return (
     <main id="main-content" className="flex flex-1 flex-col">
       <Hero />
+      <ServiceOffer />
       <ProcessOffer />
 
       <section

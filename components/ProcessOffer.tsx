@@ -9,7 +9,7 @@ const steps = [
     number: "2",
     title: "Diseñar el flujo",
     description:
-      "Defino la solución que resuelve el problema real: landing, catálogo, tienda, etc.",
+      "Traduzco lo que necesitás en una solución concreta, sin agregar complejidad de más.",
   },
   {
     number: "3",

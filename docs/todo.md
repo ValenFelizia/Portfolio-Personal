@@ -263,17 +263,21 @@
 
 ### Fase 20: Oferta Más Clara
 
-- [ ] **Home** — evaluar agregar bloque corto "Qué puedo hacer por tu negocio"
-- [ ] **Oferta** — mantenerlo simple, sin parecer agencia genérica
-- [ ] **Oferta** — posibles líneas:
-  - [ ] Landing institucional para generar confianza
-  - [ ] Catálogo online con pedidos por WhatsApp
-  - [ ] Tienda simple o e-commerce a medida cuando tenga sentido
-- [ ] **Oferta** — explicar entregables sin hablar de presupuesto si todavía no se quiere publicar precios
-- [ ] **Post-lanzamiento** — aclarar de forma breve qué pasa después de publicar:
-  - [ ] Autogestión
-  - [ ] Ajustes básicos
-  - [ ] Mantenimiento si aplica
+> **Branch `development`:** bloque `ServiceOffer` entre Hero y Cómo trabajo; iterar copy/orden antes de merge a main.
+
+- [x] **Home** — evaluar agregar bloque corto "Qué puedo hacer por tu negocio"
+  - **Hecho:** `components/ServiceOffer.tsx` con `#oferta`.
+- [x] **Oferta** — mantenerlo simple, sin parecer agencia genérica
+- [x] **Oferta** — posibles líneas:
+  - [x] Landing institucional para generar confianza
+  - [x] Catálogo online con pedidos por WhatsApp
+  - [x] Tienda simple o e-commerce a medida cuando tenga sentido
+- [x] **Oferta** — explicar entregables sin hablar de presupuesto si todavía no se quiere publicar precios
+- [x] **Post-lanzamiento** — aclarar de forma breve qué pasa después de publicar:
+  - [x] Autogestión
+  - [x] Ajustes básicos
+  - [x] Mantenimiento si aplica
+- [x] **ProcessOffer** — sacar landing/catálogo/tienda del paso 2 (ahora viven en Oferta)
 
 ### Fase 21: Verificación Final V1.2
 
