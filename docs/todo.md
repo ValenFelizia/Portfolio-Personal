@@ -230,15 +230,17 @@
 
 ### Fase 18: Cards Orientadas a Clientes
 
-- [ ] **ProjectCard** — hacer visible el CTA "Leer caso de estudio"
-- [ ] **ProjectCard** — mantener "Visitar sitio publicado" como acción secundaria
-- [ ] **ProjectCard** — evitar que la acción visual más fuerte saque al usuario del portfolio antes de leer el caso
-- [ ] **Home** — reemplazar o esconder tech pills en cards para clientes no técnicos
-- [ ] **Home** — usar tags/beneficios de negocio en vez de stack:
-  - [ ] Felisa: "Catálogo autogestionable", "Pedidos por WhatsApp", "Sin comisiones"
-  - [ ] 787 Rumbos: "Sitio institucional", "Contacto verificable", "Confianza online"
-- [ ] **Detalle de proyecto** — mantener stack técnico en detalle o sección secundaria
-- [ ] **Detalle de proyecto** — mostrar `repoUrl` como respaldo técnico discreto
+> **Decisión:** home orientado a beneficios de negocio; stack y repo solo en detalle del caso.
+
+- [x] **ProjectCard** — hacer visible el CTA "Leer caso de estudio"
+- [x] **ProjectCard** — mantener "Visitar sitio publicado" como acción secundaria
+- [x] **ProjectCard** — evitar que la acción visual más fuerte saque al usuario del portfolio antes de leer el caso
+- [x] **Home** — reemplazar o esconder tech pills en cards para clientes no técnicos
+- [x] **Home** — usar tags/beneficios de negocio en vez de stack:
+  - [x] Felisa: "Catálogo autogestionable", "Pedidos por WhatsApp", "Sin comisiones"
+  - [x] 787 Rumbos: "Sitio institucional", "Contacto verificable", "Confianza online"
+- [x] **Detalle de proyecto** — mantener stack técnico en detalle o sección secundaria
+- [x] **Detalle de proyecto** — mostrar `repoUrl` como respaldo técnico discreto
 
 ### Fase 19: Casos y Prueba de Confianza
 

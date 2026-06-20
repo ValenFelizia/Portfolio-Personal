@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import type { CSSProperties } from "react";
 import { imageConfig } from "@/lib/imageConfig";
 
 export interface ProjectCardProps {
   title: string;
   client: string;
-  techStack: string | string[];
+  highlights?: string | string[];
   liveUrl: string;
   slug: string;
   imageSrc?: string;
@@ -18,21 +18,24 @@ export interface ProjectCardProps {
   priorityImage?: boolean;
 }
 
-function normalizeTechStack(techStack: string | string[]): string[] {
-  if (Array.isArray(techStack)) {
-    return techStack.map((item) => item.trim()).filter(Boolean);
+function normalizeList(items: string | string[]): string[] {
+  if (Array.isArray(items)) {
+    return items.map((item) => item.trim()).filter(Boolean);
   }
 
-  return techStack
+  return items
     .split(",")
     .map((item) => item.trim())
     .filter(Boolean);
 }
 
+const linkFocus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+
 export function ProjectCard({
   title,
   client,
-  techStack,
+  highlights,
   liveUrl,
   slug,
   imageSrc,
@@ -43,7 +46,7 @@ export function ProjectCard({
   impact,
   priorityImage = false,
 }: ProjectCardProps) {
-  const stack = normalizeTechStack(techStack);
+  const tags = highlights ? normalizeList(highlights) : [];
   const resolvedLogoScale = logoScale ?? 1;
   const cardStyle = {
     "--brand-color": brandColor ?? "#6366f1",
@@ -52,7 +55,7 @@ export function ProjectCard({
   return (
     <article
       style={cardStyle}
-      className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] transition-all duration-300 ease-out motion-safe:hover:-translate-y-1 motion-safe:hover:scale-[1.01] motion-safe:hover:border-[color-mix(in_srgb,var(--brand-color)_30%,transparent)] motion-safe:hover:bg-white/[0.04] motion-safe:hover:shadow-[0_8px_30px_color-mix(in_srgb,var(--brand-color)_18%,transparent)]"
+      className="group flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] transition-all duration-300 ease-out motion-safe:hover:-translate-y-1 motion-safe:hover:scale-[1.01] motion-safe:hover:border-[color-mix(in_srgb,var(--brand-color)_30%,transparent)] motion-safe:hover:bg-white/[0.04] motion-safe:hover:shadow-[0_8px_30px_color-mix(in_srgb,var(--brand-color)_18%,transparent)]"
     >
       <div className="relative aspect-[16/10] overflow-hidden bg-white/[0.03] after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:bg-[var(--brand-color)] after:opacity-0 after:transition-opacity after:duration-300 group-hover:after:opacity-50">
         {imageSrc ? (
@@ -91,33 +94,42 @@ export function ProjectCard({
           )}
         </div>
 
-        {stack.length > 0 && (
-          <ul className="flex flex-wrap gap-2">
-            {stack.map((tech) => (
+        {tags.length > 0 && (
+          <ul className="flex flex-wrap gap-2" aria-label="Beneficios del proyecto">
+            {tags.map((tag) => (
               <li
-                key={tech}
-                className="rounded-full border border-white/10 px-2.5 py-1 text-xs text-muted"
+                key={tag}
+                className="rounded-full border border-[color:color-mix(in_srgb,var(--brand-color)_25%,transparent)] bg-[color:color-mix(in_srgb,var(--brand-color)_8%,transparent)] px-2.5 py-1 text-xs text-foreground/85"
               >
-                {tech}
+                {tag}
               </li>
             ))}
           </ul>
         )}
 
-        <div className="relative z-10 mt-auto flex items-center justify-between gap-4 pt-2">
-          <a
-            href={liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative z-10 inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 -ml-2.5 text-sm text-accent transition-all duration-300 group-hover:bg-accent/10 group-hover:text-indigo-300 hover:bg-accent/15 hover:text-accent-hover hover:ring-1 hover:ring-accent/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-          >
-            Visitar sitio publicado
-            <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-          </a>
+        <div className="mt-auto flex flex-col gap-4 pt-2 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col gap-2">
+            <Link
+              href={`/proyectos/${slug}`}
+              className={`inline-flex w-fit items-center gap-1.5 rounded-full border border-accent/40 bg-accent/10 px-4 py-2 text-sm font-medium text-foreground transition-all duration-300 hover:border-accent hover:bg-accent/20 hover:text-white motion-safe:group-hover:border-accent motion-safe:group-hover:bg-accent/15 ${linkFocus}`}
+            >
+              Leer caso de estudio
+              <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+            </Link>
+            <a
+              href={liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex w-fit items-center gap-1.5 px-1 py-1 text-sm text-muted transition-colors duration-300 hover:text-accent ${linkFocus}`}
+            >
+              Visitar sitio publicado
+              <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+            </a>
+          </div>
 
           {logoPath && (
             <div
-              className={`relative z-10 shrink-0 rounded-md border border-white/15 bg-white/95 shadow-sm ${
+              className={`shrink-0 self-end rounded-md border border-white/15 bg-white/95 shadow-sm ${
                 resolvedLogoScale > 1 ? "p-1" : "p-2"
               }`}
             >
@@ -135,12 +147,6 @@ export function ProjectCard({
           )}
         </div>
       </div>
-
-      <Link
-        href={`/proyectos/${slug}`}
-        aria-label={`Leer caso de estudio de ${title}`}
-        className="absolute inset-0 z-[1] before:absolute before:inset-0 before:content-[''] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-      />
     </article>
   );
 }

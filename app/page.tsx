@@ -55,7 +55,7 @@ export default async function Home() {
                 slug={project.slug}
                 title={project.frontmatter.title}
                 client={project.frontmatter.client}
-                techStack={project.frontmatter.techStack}
+                highlights={project.frontmatter.highlights}
                 liveUrl={project.frontmatter.liveUrl}
                 imageSrc={`/${project.slug}-preview.webp`}
                 brandColor={project.frontmatter.brandColor}

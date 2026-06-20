@@ -75,6 +75,13 @@ export async function generateMetadata({
   };
 }
 
+function normalizeCommaList(value: string): string[] {
+  return value
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = await getProjectBySlug(slug);
@@ -86,6 +93,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const { frontmatter, content } = project;
   const brandColor = frontmatter.brandColor ?? "#6366f1";
   const logoScale = frontmatter.logoScale ?? 1;
+  const techItems = normalizeCommaList(frontmatter.techStack);
 
   const brandStyle = {
     "--brand-color": brandColor,
@@ -158,7 +166,46 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <MDXRemote source={content} components={MDXComponents} />
         </div>
 
-        <footer className="border-t border-[color:color-mix(in_srgb,var(--brand-color)_20%,transparent)] pt-10">
+        <section
+          aria-labelledby="technical-details-heading"
+          className="border-t border-[color:color-mix(in_srgb,var(--brand-color)_20%,transparent)] pt-10"
+        >
+          <h2
+            id="technical-details-heading"
+            className="text-sm uppercase tracking-widest text-muted"
+          >
+            Detalles técnicos
+          </h2>
+
+          {techItems.length > 0 && (
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {techItems.map((tech) => (
+                <li
+                  key={tech}
+                  className="rounded-full border border-white/10 px-2.5 py-1 text-xs text-muted"
+                >
+                  {tech}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {frontmatter.repoUrl && (
+            <p className="mt-4">
+              <a
+                href={frontmatter.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >
+                Ver repositorio
+                <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+              </a>
+            </p>
+          )}
+        </section>
+
+        <footer className="mt-12 border-t border-[color:color-mix(in_srgb,var(--brand-color)_20%,transparent)] pt-10">
           <h2 className="text-2xl font-medium tracking-tight text-foreground">
             ¿Tenés un problema parecido?
           </h2>

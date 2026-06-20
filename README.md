@@ -124,12 +124,11 @@ client: "Client or product name"
 date: "2026"
 role: "Fullstack"
 liveUrl: "https://..."
-repoUrl: "https://github.com/..."
 techStack: "Next.js, Tailwind CSS"
 ---
 ```
 
-Optional fields: `brandColor`, `logoPath`, `logoScale`, `impact`, `summary`, `seoDescription`.
+Optional fields: `brandColor`, `logoPath`, `logoScale`, `impact`, `summary`, `seoDescription`, `highlights`, `repoUrl` (solo si el proyecto es open source y querés mostrar el repo en el caso de estudio).
 
 1. **Write** the body with sections such as `## El Problema`, `## La Solución y Arquitectura`, `## El Impacto`.
 2. **Add assets** in `/public`:

@@ -9,13 +9,16 @@ export interface ProjectFrontmatter {
   date: string;
   role: string;
   liveUrl: string;
-  repoUrl: string;
+  /** Only for open-source projects shown in the portfolio. */
+  repoUrl?: string;
   brandColor?: string;
   logoPath?: string;
   logoScale?: number;
   summary?: string;
   impact?: string;
   seoDescription?: string;
+  /** Business-facing tags for home cards (comma-separated in MDX). */
+  highlights?: string;
 }
 
 export interface Project {
@@ -33,7 +36,6 @@ const REQUIRED_FRONTMATTER_KEYS: (keyof ProjectFrontmatter)[] = [
   "date",
   "role",
   "liveUrl",
-  "repoUrl",
 ];
 
 function normalizeDate(value: unknown): string {
@@ -78,13 +80,14 @@ function parseFrontmatter(data: Record<string, unknown>, filename: string): Proj
     date: normalizeDate(data.date),
     role: String(data.role),
     liveUrl: String(data.liveUrl),
-    repoUrl: String(data.repoUrl),
+    repoUrl: parseOptionalString(data.repoUrl),
     brandColor: parseOptionalString(data.brandColor),
     logoPath: parseOptionalString(data.logoPath),
     logoScale: parseOptionalNumber(data.logoScale),
     summary: parseOptionalString(data.summary),
     impact: parseOptionalString(data.impact),
     seoDescription: parseOptionalString(data.seoDescription),
+    highlights: parseOptionalString(data.highlights),
   };
 }
 

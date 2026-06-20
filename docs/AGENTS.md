@@ -24,7 +24,9 @@ Referencia principal: `docs/specs.md`. Hoja de ruta: `docs/todo.md`. Respetar la
 
 ## Frontmatter obligatorio (cada `.mdx`)
 
-`title`, `client`, `techStack`, `date`, `role`, `liveUrl`, `repoUrl`
+`title`, `client`, `techStack`, `date`, `role`, `liveUrl`
+
+Opcional: `repoUrl` (solo proyectos open source), `highlights`, `impact`, etc.
 
 ## Cuerpo MDX (casos de estudio)
 
