@@ -34,24 +34,10 @@ function LinkedInIcon(props: ComponentPropsWithoutRef<"svg">) {
 
 type ContactIcon = LucideIcon | typeof GitHubIcon | typeof LinkedInIcon;
 
-const afterContactSteps = [
-  {
-    number: "1",
-    title: "Primera charla breve",
-    description:
-      "Sin compromiso: me contás qué necesitás y en qué etapa está tu negocio.",
-  },
-  {
-    number: "2",
-    title: "Entiendo tu operación",
-    description: "Revisamos cómo operás hoy y qué te está frenando.",
-  },
-  {
-    number: "3",
-    title: "Revisamos si una web ayuda",
-    description:
-      "Si tiene sentido, te envío una propuesta y presupuesto completo; si no, te lo digo con honestidad.",
-  },
+const afterContactExpectations = [
+  "Primera charla sin compromiso",
+  "Analizamos tu operación y te armo una propuesta/presupuesto",
+  "Si una web no tiene sentido para tu caso, te lo digo",
 ] as const;
 
 const contactOptions: {
@@ -164,26 +150,23 @@ export function Contact() {
         <p className="text-center text-sm uppercase tracking-widest text-muted">
           Después de escribirme
         </p>
-        <ol className="mt-8 grid gap-8 sm:grid-cols-3 sm:gap-6">
-          {afterContactSteps.map((step) => (
+        <p className="mx-auto mt-4 max-w-lg text-center text-base leading-relaxed text-muted">
+          Charlamos sin vueltas, me contás qué necesitás y en qué etapa está tu negocio.
+        </p>
+        <ul className="mx-auto mt-6 max-w-md space-y-3">
+          {afterContactExpectations.map((item) => (
             <li
-              key={step.number}
-              className="flex flex-col items-center gap-3 text-center"
+              key={item}
+              className="flex items-start gap-3 text-sm leading-relaxed text-muted"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-accent/35 bg-accent/15 text-xs font-semibold tracking-widest text-accent shadow-[0_0_20px_rgba(99,102,241,0.12)]">
-                {step.number}
-              </span>
-              <div className="max-w-xs space-y-1.5">
-                <p className="text-sm font-medium text-foreground">
-                  {step.title}
-                </p>
-                <p className="text-sm leading-relaxed text-muted">
-                  {step.description}
-                </p>
-              </div>
+              <span
+                aria-hidden
+                className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+              />
+              {item}
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
 
     </section>

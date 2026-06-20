@@ -216,14 +216,17 @@
 
 ### Fase 17: Reducir Repetición en Home
 
-- [ ] **Home** — revisar si `ProcessOffer` y "Después de escribirme" están contando lo mismo
-- [ ] **Opción recomendada** — mantener **Cómo trabajo** como sección principal de proceso
-- [ ] **Contact** — convertir "Después de escribirme" en una versión más corta y concreta, no otro proceso completo
-- [ ] **Contact** — posible reemplazo: una línea de expectativa + 2 bullets breves:
-  - [ ] "Primera charla sin compromiso"
-  - [ ] "Si una web no tiene sentido para tu caso, te lo digo"
-- [ ] **Contact** — evitar repetir "entender operación / revisar si una web ayuda" con las mismas palabras del proceso
-- [ ] **Copy** — corregir "primer charla" por "primera charla"
+> **Decisión:** `ProcessOffer` ("Cómo trabajo") queda como único bloque de proceso; Contact solo aclara expectativas post-mensaje.
+
+- [x] **Home** — revisar si `ProcessOffer` y "Después de escribirme" están contando lo mismo
+  - **Resultado:** sí, repetían entender operación / evaluar si una web ayuda.
+- [x] **Opción recomendada** — mantener **Cómo trabajo** como sección principal de proceso
+- [x] **Contact** — convertir "Después de escribirme" en una versión más corta y concreta, no otro proceso completo
+- [x] **Contact** — posible reemplazo: una línea de expectativa + 2 bullets breves:
+  - [x] "Primera charla sin compromiso"
+  - [x] "Si una web no tiene sentido para tu caso, te lo digo"
+- [x] **Contact** — evitar repetir "entender operación / revisar si una web ayuda" con las mismas palabras del proceso
+- [x] **Copy** — corregir "primer charla" por "primera charla"
 
 ### Fase 18: Cards Orientadas a Clientes
 
