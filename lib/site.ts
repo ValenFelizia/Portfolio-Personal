@@ -25,7 +25,7 @@ export const siteMetadata = {
 export const siteContact = {
   email: "valentinfelizia@gmail.com",
   whatsapp: getWhatsAppUrl(),
-  linkedin: "https://linkedin.com/in/valentín-felizia-103059212",
+  linkedin: "https://www.linkedin.com/in/valent%C3%ADn-felizia-103059212",
   github: "https://github.com/ValenFelizia",
 };
 

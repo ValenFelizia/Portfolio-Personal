@@ -9,7 +9,7 @@ A client-first portfolio for a freelance web developer (myself). The live site s
 ## Goals
 
 - **For my potential clients:** explain what I do, how and who I work with, and how to start a conversation (WhatsApp-first in my case).
-- **For developers:** a clear static Next.js setup, MDX-driven case studies that are easy to add (the site is built on being modular), and spec-driven workflow (`specs.md`, `todo.md`).
+- **For developers:** a clear static Next.js setup, MDX-driven case studies that are easy to add (the site is built on being modular), and spec-driven workflow (`docs/specs.md`, `docs/todo.md`).
 
 The UI and copy are in **Spanish** (`lang="es"`). I don't plan to translate it yet. Documentation in this repo is in **English**.
 
@@ -34,8 +34,8 @@ The UI and copy are in **Spanish** (`lang="es"`). I don't plan to translate it y
 
 This project follows **Spec-Driven Development (SDD)**:
 
-1. `**specs.md`** — product and technical source of truth.
-2. `**todo.md`** — phased implementation checklist.
+1. **`docs/specs.md`** — product and technical source of truth.
+2. **`docs/todo.md`** — phased implementation checklist.
 
 ### Folder structure
 
@@ -165,6 +165,6 @@ This repository is public under the [MIT License](LICENSE). The design and copy 
 
 ## Related docs
 
-- `[specs.md](specs.md)` — full technical and product specification (Spanish)
-- `[todo.md](todo.md)` — implementation roadmap and phase checklist
+- [`docs/specs.md`](docs/specs.md) — full technical and product specification (Spanish)
+- [`docs/todo.md`](docs/todo.md) — implementation roadmap and phase checklist
 

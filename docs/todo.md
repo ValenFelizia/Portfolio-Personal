@@ -142,23 +142,23 @@
 
 ### Fase 14: Verificación Final V1.1
 
-- [ ] Ejecutar lint
-- [ ] Ejecutar build estático
-- [ ] Verificar rutas:
-  - [ ] `/`
-  - [ ] `/proyectos/felisa`
-  - [ ] `/proyectos/rumbos`
-- [ ] Verificar links externos:
-  - [ ] WhatsApp
-  - [ ] Email
-  - [ ] LinkedIn
-  - [ ] GitHub
-  - [ ] Sitios en producción
-  - [ ] Repositorios
-- [ ] Verificar mobile manualmente
-- [ ] Verificar metadata al compartir la URL
-- [ ] Deploy final en Cloudflare Pages
-- [ ] Actualizar `todo.md` marcando tareas completadas
+- [x] Ejecutar lint
+- [x] Ejecutar build estático
+- [x] Verificar rutas:
+  - [x] `/`
+  - [x] `/proyectos/felisa`
+  - [x] `/proyectos/rumbos`
+- [x] Verificar links externos:
+  - [x] WhatsApp
+  - [x] Email
+  - [x] LinkedIn
+  - [x] GitHub
+  - [x] Sitios en producción
+  - [x] Repositorios
+- [x] Verificar mobile manualmente
+- [x] Verificar metadata al compartir la URL
+- [x] Deploy final en Cloudflare Pages
+- [x] Actualizar `todo.md` marcando tareas completadas
 
 ---
 
@@ -170,22 +170,34 @@
 
 - **Footer:** mantener la idea actual. El link open source en GitHub no se considera un problema comercial; solo pulir wording si se siente necesario.
 - **Open Graph:** si el preview al compartir por WhatsApp se ve correcto, no rehacerlo por estética. Solo investigar si `/opengraph-image` o el build fallan realmente.
-- **Hero:** recuperar el lema original como frase principal: "Desarrollo web enfocado en procesos y negocio".
+- **Hero:** lema original como frase principal: "Desarrollo web enfocado en procesos y negocio".
 - **Subtítulo del Hero:** debe llevar lo concreto: negocios locales, WhatsApp, catálogo/tienda online, confianza digital. Evitar tono corporativo.
 - **Prioridad:** primero bugs públicos y conversión; después detalles de repo/SEO avanzados.
 
 ### Fase 15: Bugs Públicos y Verificación Técnica
 
-- [ ] **Sitemap** — investigar por qué `https://portfolio-vfelizia.pages.dev/sitemap.xml` devuelve `500`
-- [ ] **Sitemap** — corregir generación o reemplazar por una solución estática compatible con Cloudflare Pages
-- [ ] **Open Graph** — verificar si `/opengraph-image` devuelve `500` en producción o si solo falla el endpoint directo
-- [ ] **Open Graph** — si el endpoint falla de verdad, evaluar reemplazar `opengraph-image.tsx` por una imagen estática en `/public`
-- [ ] **Open Graph** — evitar dependencia externa de fuente (`fonts.bunny.net`) si afecta build/reproducibilidad
-- [ ] **Favicon** — agregar `favicon.ico` o `app/icon.*`
-- [ ] **LinkedIn** — confirmar URL final y usar versión confiable/ASCII si corresponde
-- [ ] **README** — revisar links a docs (`docs/specs.md`, `docs/todo.md`) para evitar enlaces rotos
-- [ ] **AGENTS** — actualizar o limpiar referencias desactualizadas del hero inicial
-- [ ] **CI opcional** — evaluar workflow simple de GitHub Actions para `npm run lint` + `npm run build`
+> **Auditoría 2026-06-20:** el reporte de `500` en sitemap/OG no se reproduce en producción actual (ambos `200`). El build estático genera `sitemap.xml`, `opengraph-image` y `robots.txt` correctamente.
+
+- [x] **Sitemap** — investigar por qué `https://portfolio-vfelizia.pages.dev/sitemap.xml` devuelve `500`
+  - **Resultado:** devuelve `200` con XML válido (home + 2 proyectos). Falso positivo o incidente ya resuelto.
+- [x] **Sitemap** — corregir generación o reemplazar por una solución estática compatible con Cloudflare Pages
+  - **Resultado:** no requiere cambio; `app/sitemap.ts` + `output: "export"` funciona.
+- [x] **Open Graph** — verificar si `/opengraph-image` devuelve `500` en producción o si solo falla el endpoint directo
+  - **Resultado:** `200` en producción; meta `og:image` presente en el HTML.
+- [x] **Open Graph** — si el endpoint falla de verdad, evaluar reemplazar `opengraph-image.tsx` por una imagen estática en `/public`
+  - **Resultado:** no aplica; endpoint OK. Sin cambios.
+- [x] **Open Graph** — evitar dependencia externa de fuente (`fonts.bunny.net`) si afecta build/reproducibilidad
+  - **Resultado:** el build local y CI pasan con la fuente remota. Riesgo menor documentado; no bloquea V1.2. Reevaluar solo si falla en Cloudflare Pages.
+- [x] **Favicon** — agregar `favicon.ico` o `app/icon.*`
+  - **Hecho:** `app/icon.tsx` con monograma VF (misma línea visual que OG), sin dependencia externa.
+- [x] **LinkedIn** — confirmar URL final y usar versión confiable/ASCII si corresponde
+  - **Hecho:** perfil verificado; URL actualizada a `https://www.linkedin.com/in/valent%C3%ADn-felizia-103059212` (www + percent-encoding).
+- [x] **README** — revisar links a docs (`docs/specs.md`, `docs/todo.md`) para evitar enlaces rotos
+  - **Hecho:** enlaces corregidos en sección Related docs y Architecture.
+- [x] **AGENTS** — actualizar o limpiar referencias desactualizadas del hero inicial
+  - **Hecho:** rutas `docs/*` y guía de hero alineada a V1.2 (Fase 16).
+- [x] **CI opcional** — evaluar workflow simple de GitHub Actions para `npm run lint` + `npm run build`
+  - **Hecho:** `.github/workflows/ci.yml` en push/PR a `main`.
 
 ### Fase 16: Hero Más Corto y Más Propio
 

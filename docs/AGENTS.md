@@ -6,7 +6,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 # Portfolio Personal — Guía para agentes(desactualizada parcialmente, estas instrucciones son de cuando iniciamos el proyecto en Mayo)
 
-Referencia principal: `specs.md`. Hoja de ruta: `todo.md`. Respetar las fases: no adelantar UI (Fase 3+) ni rutas (Fase 4+) si la tarea actual es de datos o setup.
+Referencia principal: `docs/specs.md`. Hoja de ruta: `docs/todo.md`. Respetar las fases activas en `docs/todo.md` (actualmente V1.2).
 
 ## Contexto del desarrollador
 
@@ -38,7 +38,9 @@ Headings esperados: `## El Problema`, `## La Solución y Arquitectura`, `## El I
 
 ## Frase guía (Hero)
 
-"Desarrollo web enfocado en procesos y negocio. Construyo sitios rápidos y e-commerces escalables que entregan resultados reales."
+**H1 (V1.2):** "Desarrollo web enfocado en procesos y negocio."
+
+**Subtítulo:** negocios locales, ventas por WhatsApp, catálogos/tiendas online, presencia digital confiable. Evitar tono corporativo ni frases genéricas ("vender mejor", "web rápida y fácil de usar") en el h1.
 
 ## Idioma
 
