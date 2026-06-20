@@ -10,8 +10,7 @@ Referencia principal: `specs.md`. Hoja de ruta: `todo.md`. Respetar las fases: n
 
 ## Contexto del desarrollador
 
-- Valentín está **aprendiendo** — este portfolio es su **tercera página web**.
-- Priorizar código claro, explicaciones didácticas cuando se pida contexto, y decisiones fáciles de entender.
+- Priorizar código claro, explicaciones didácticas cuando se pida contexto.
 - Al introducir conceptos nuevos (MDX, server-only, tipos, etc.), explicar el *por qué* además del *qué*.
 - Evitar sobre-ingeniería; preferir soluciones directas que sirvan para aprender y escalar después.
 
