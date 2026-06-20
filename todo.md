@@ -139,15 +139,21 @@
 
 ### Fase 10: Conversión y Contacto
 
-- [ ] **Contact** — destacar WhatsApp como CTA principal, no como una tarjeta más
-- [ ] **Contact** — agregar mensaje prellenado de WhatsApp para bajar fricción
-- [ ] **Contact** — explicar el siguiente paso después del contacto:
-  - [ ] Primera charla breve
-  - [ ] Entender el negocio
-  - [ ] Detectar si una web realmente ayuda
-- [ ] **Contact** — revisar si GitHub debe seguir al mismo nivel que WhatsApp/Email/LinkedIn o pasar al footer
-- [ ] **Header** — revisar navegación mobile para que no se sienta apretada en pantallas chicas
-- [ ] **Footer** — considerar links secundarios a GitHub, LinkedIn y contacto
+- [x] **Contact** — destacar WhatsApp como CTA principal, no como una tarjeta más
+  > Card WhatsApp con borde/fondo accent y badge "Canal recomendado" dentro del grid 2×2.
+- [x] **Contact** — agregar mensaje prellenado de WhatsApp para bajar fricción
+  > `getWhatsAppUrl()` y `whatsappPrefillMessage` en `lib/site.ts`.
+- [x] **Contact** — explicar el siguiente paso después del contacto:
+  - [x] Primera charla breve
+  - [x] Entender el negocio
+  - [x] Detectar si una web realmente ayuda
+  > Bloque "Después de escribirme" con 3 pasos entre intro y grid de canales.
+- [x] **Contact** — revisar si GitHub debe seguir al mismo nivel que WhatsApp/Email/LinkedIn o pasar al footer
+  > Decidido: GitHub permanece en el grid 2×2 (simetría y señal técnica sin competir con WhatsApp).
+- [x] **Header** — revisar navegación mobile para que no se sienta apretada en pantallas chicas
+  > `gap-4`, `text-xs` en mobile, `px-4` y `truncate` en logo.
+- [x] **Footer** — considerar links secundarios a GitHub, LinkedIn y contacto
+  > Decidido: no agregar links; footer minimal (canales ya en Contact).
 
 ### Fase 11: SEO Básico y Social Preview
 

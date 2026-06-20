@@ -31,17 +31,39 @@ function LinkedInIcon(props: ComponentPropsWithoutRef<"svg">) {
 
 type ContactIcon = LucideIcon | typeof GitHubIcon | typeof LinkedInIcon;
 
+const afterContactSteps = [
+  {
+    number: "1",
+    title: "Primera charla breve",
+    description:
+      "Sin compromiso: me contás qué necesitás y en qué etapa está tu negocio.",
+  },
+  {
+    number: "2",
+    title: "Entiendo tu operación",
+    description: "Revisamos cómo operás hoy y qué te está frenando.",
+  },
+  {
+    number: "3",
+    title: "Revisamos si una web ayuda",
+    description:
+      "Si tiene sentido, te envío una propuesta y presupuesto completo; si no, te lo digo con honestidad.",
+  },
+] as const;
+
 const contactOptions: {
   label: string;
   description: string;
   href: string;
   icon: ContactIcon;
+  isPrimary?: boolean;
 }[] = [
   {
     label: "WhatsApp",
     description: "¡Charlemos!",
     href: siteContact.whatsapp,
     icon: MessageCircle,
+    isPrimary: true,
   },
   {
     label: "Email",
@@ -75,15 +97,16 @@ export function Contact() {
           ¿Tenés un proyecto en mente?
         </h2>
         <p className="mx-auto max-w-xl text-base leading-relaxed text-muted">
-          Elegí el canal que te resulte más cómodo. Respondo con foco en entender
-          tu negocio antes de proponer una solución.
+          La forma más directa de empezar es por WhatsApp. Si preferís otro
+          canal, también está disponible.
         </p>
       </div>
 
-      <div className="mt-12 grid gap-4 sm:grid-cols-2">
+      <div className="mt-10 grid gap-4 sm:grid-cols-2">
         {contactOptions.map((option) => {
           const Icon = option.icon;
           const isExternal = option.href.startsWith("http");
+          const isPrimary = option.isPrimary === true;
 
           return (
             <a
@@ -91,13 +114,34 @@ export function Contact() {
               href={option.href}
               target={isExternal ? "_blank" : undefined}
               rel={isExternal ? "noopener noreferrer" : undefined}
-              className="group flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:border-accent/40 hover:bg-accent/5"
+              className={
+                isPrimary
+                  ? "group flex items-center gap-4 rounded-xl border border-accent/50 bg-accent/10 p-5 transition-all duration-300 hover:border-accent hover:bg-accent/15"
+                  : "group flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:border-accent/40 hover:bg-accent/5"
+              }
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-muted transition-colors duration-300 group-hover:border-accent/40 group-hover:text-accent">
+              <span
+                className={
+                  isPrimary
+                    ? "flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-accent/40 bg-accent/15 text-accent transition-colors duration-300 group-hover:border-accent group-hover:bg-accent/25"
+                    : "flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-muted transition-colors duration-300 group-hover:border-accent/40 group-hover:text-accent"
+                }
+              >
                 <Icon className="h-5 w-5" />
               </span>
               <span className="text-left">
-                <span className="block text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-accent">
+                {isPrimary && (
+                  <span className="mb-1 block text-[0.65rem] font-medium uppercase tracking-widest text-accent">
+                    Canal recomendado
+                  </span>
+                )}
+                <span
+                  className={
+                    isPrimary
+                      ? "block text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-white"
+                      : "block text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-accent"
+                  }
+                >
                   {option.label}
                 </span>
                 <span className="mt-0.5 block text-sm text-muted">
@@ -108,6 +152,33 @@ export function Contact() {
           );
         })}
       </div>
+
+      <div className="mt-12 border-t border-white/10 pt-12">
+        <p className="text-center text-sm uppercase tracking-widest text-muted">
+          Después de escribirme
+        </p>
+        <ol className="mt-8 grid gap-8 sm:grid-cols-3 sm:gap-6">
+          {afterContactSteps.map((step) => (
+            <li
+              key={step.number}
+              className="flex flex-col items-center gap-3 text-center"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-accent/35 bg-accent/15 text-xs font-semibold tracking-widest text-accent shadow-[0_0_20px_rgba(99,102,241,0.12)]">
+                {step.number}
+              </span>
+              <div className="max-w-xs space-y-1.5">
+                <p className="text-sm font-medium text-foreground">
+                  {step.title}
+                </p>
+                <p className="text-sm leading-relaxed text-muted">
+                  {step.description}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
     </section>
   );
 }

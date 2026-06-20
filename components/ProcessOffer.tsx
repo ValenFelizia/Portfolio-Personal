@@ -1,21 +1,21 @@
 const steps = [
   {
-    number: "01",
+    number: "1",
     title: "Entender el negocio",
     description:
       "Escucho cómo operás hoy, qué te frena y qué resultado buscás.",
   },
   {
-    number: "02",
+    number: "2",
     title: "Diseñar el flujo",
     description:
       "Defino la solución que resuelve el problema real: landing, catálogo, tienda, etc.",
   },
   {
-    number: "03",
+    number: "3",
     title: "Construir y lanzar",
     description:
-      "Desarrollo, publico en producción y te dejo herramientas para autogestionar cuando tenga sentido.",
+      "Desarrollo, publico en producción y te dejo herramientas para autogestionarte.",
   },
 ] as const;
 
@@ -36,7 +36,7 @@ export function ProcessOffer() {
           De la primer charla al sitio en vivo
         </h2>
         <p className="mx-auto max-w-xl text-base leading-relaxed text-muted">
-          Sin pasos innecesarios: entiendo el negocio, diseño el flujo y
+          Sin pasos innecesarios: entiendo tu operación, diseño el flujo y
           construyo algo publicable.
         </p>
       </div>
