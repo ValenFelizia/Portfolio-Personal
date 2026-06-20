@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import type { CSSProperties } from "react";
+import { imageConfig } from "@/lib/imageConfig";
 
 export interface ProjectCardProps {
   title: string;
@@ -14,6 +15,7 @@ export interface ProjectCardProps {
   logoPath?: string;
   logoScale?: number;
   impact?: string;
+  priorityImage?: boolean;
 }
 
 function normalizeTechStack(techStack: string | string[]): string[] {
@@ -39,6 +41,7 @@ export function ProjectCard({
   logoPath,
   logoScale,
   impact,
+  priorityImage = false,
 }: ProjectCardProps) {
   const stack = normalizeTechStack(techStack);
   const resolvedLogoScale = logoScale ?? 1;
@@ -57,6 +60,12 @@ export function ProjectCard({
           <img
             src={imageSrc}
             alt={imageAlt ?? `Captura de ${title}`}
+            width={imageConfig.projectPreview.width}
+            height={imageConfig.projectPreview.height}
+            sizes={imageConfig.projectPreview.sizes}
+            loading={priorityImage ? "eager" : "lazy"}
+            decoding="async"
+            fetchPriority={priorityImage ? "high" : "auto"}
             className="h-full w-full object-cover object-left-top transition-transform duration-300 motion-safe:group-hover:scale-[1.02]"
           />
         ) : (
@@ -100,7 +109,7 @@ export function ProjectCard({
             href={liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative z-10 inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 -ml-2.5 text-sm text-accent transition-all duration-300 group-hover:bg-accent/10 group-hover:text-indigo-300 hover:bg-accent/15 hover:text-accent-hover hover:ring-1 hover:ring-accent/25"
+            className="relative z-10 inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 -ml-2.5 text-sm text-accent transition-all duration-300 group-hover:bg-accent/10 group-hover:text-indigo-300 hover:bg-accent/15 hover:text-accent-hover hover:ring-1 hover:ring-accent/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             Visitar sitio publicado
             <ExternalLink className="h-3.5 w-3.5" aria-hidden />
