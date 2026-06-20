@@ -44,3 +44,10 @@ Headings esperados: `## El Problema`, `## La Solución y Arquitectura`, `## El I
 ## Idioma
 
 UI y contenido en **español** (`lang="es"` en layout).
+
+## Performance y assets
+
+- Dimensiones de referencia en `lib/imageConfig.ts`.
+- Al agregar o reemplazar `profile.webp` o `*-preview.webp` en `/public`, correr `npm run optimize-images`.
+- Imágenes below-the-fold: `loading="lazy"`; primera card de proyectos puede usar `priorityImage`.
+- Headers de seguridad y cache en `public/_headers` (Cloudflare Pages).

@@ -176,19 +176,28 @@
 
 ### Fase 12: Accesibilidad, Mobile y Calidad Técnica
 
-- [ ] **Accesibilidad** — agregar skip link para saltar al contenido principal
-- [ ] **Accesibilidad** — revisar `aria-labelledby` en secciones principales
-- [ ] **Accesibilidad** — revisar foco visible en CTA del Hero y enlaces importantes
-- [ ] **UI** — revisar `py-21` en `Contact` y reemplazar si no pertenece a la escala de Tailwind
-- [ ] **UI** — revisar experiencia mobile del header, hero, cards y contacto
-- [ ] **Performance** — medir Lighthouse mobile y desktop después de los cambios
-- [ ] **Performance** — revisar peso/dimensiones de imágenes (`profile.webp`, previews, logos)
-- [ ] **Seguridad** — evaluar `_headers` para Cloudflare Pages:
-  - [ ] `X-Content-Type-Options`
-  - [ ] `Referrer-Policy`
-  - [ ] `Permissions-Policy`
-  - [ ] CSP conservadora si no genera fricción
-- [ ] **404** — considerar página `not-found.tsx` con estilo del portfolio
+- [x] **Accesibilidad** — agregar skip link para saltar al contenido principal
+  > `SkipLink` en layout + `#main-content` en páginas.
+- [x] **Accesibilidad** — revisar `aria-labelledby` en secciones principales
+  > Proyectos, Contact, Sobre mí, ProcessOffer (ya tenía).
+- [x] **Accesibilidad** — revisar foco visible en CTA del Hero y enlaces importantes
+  > `:focus-visible` global en `globals.css` + rings en CTAs y nav.
+- [x] **UI** — revisar `py-21` en `Contact` y reemplazar si no pertenece a la escala de Tailwind
+  > Reemplazado por `py-20`.
+- [x] **UI** — revisar experiencia mobile del header, hero, cards y contacto
+  > Ajustes previos Fase 10; foco y defer en secciones inferiores.
+- [x] **Performance** — medir Lighthouse mobile y desktop después de los cambios
+  > Lighthouse mobile simulado: Performance 95, Accessibility 96, Best Practices 100.
+- [x] **Performance** — revisar peso/dimensiones de imágenes (`profile.webp`, previews, logos)
+  > `npm run optimize-images` (sharp): profile ~14KB, felisa ~24KB, rumbos ~78KB. `lib/imageConfig.ts` + lazy loading.
+- [x] **Seguridad** — evaluar `_headers` para Cloudflare Pages:
+  - [x] `X-Content-Type-Options`
+  - [x] `Referrer-Policy`
+  - [x] `Permissions-Policy`
+  - [x] CSP conservadora si no genera fricción
+  > `public/_headers` con headers seguros + cache en assets. Sin CSP (evitar fricción con export estático).
+- [x] **404** — considerar página `not-found.tsx` con estilo del portfolio
+  > `app/not-found.tsx` con CTA al inicio.
 
 ### Fase 13: Repo Público y Documentación
 
