@@ -1,10 +1,15 @@
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import type { CSSProperties } from "react";
 import { MDXComponents } from "@/components/MDXComponents";
-import { getProjectBySlug, getProjects } from "@/lib/getProjects";
+import {
+  getProjectBySlug,
+  getProjects,
+  type ProjectFrontmatter,
+} from "@/lib/getProjects";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -16,6 +21,58 @@ export async function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,
   }));
+}
+
+function getProjectDescription(frontmatter: ProjectFrontmatter): string {
+  return (
+    frontmatter.seoDescription ??
+    frontmatter.summary ??
+    frontmatter.impact ??
+    `Caso de estudio: ${frontmatter.title} para ${frontmatter.client}.`
+  );
+}
+
+export async function generateMetadata({
+  params,
+}: ProjectPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug);
+
+  if (!project) {
+    return {};
+  }
+
+  const { frontmatter } = project;
+  const title = frontmatter.title;
+  const description = getProjectDescription(frontmatter);
+  const canonicalPath = `/proyectos/${slug}`;
+  const ogImage = `/${slug}-preview.webp`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: canonicalPath,
+      type: "article",
+      images: [
+        {
+          url: ogImage,
+          alt: `Captura de ${frontmatter.title}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
+    alternates: {
+      canonical: canonicalPath,
+    },
+  };
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {

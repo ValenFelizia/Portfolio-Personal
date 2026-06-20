@@ -157,14 +157,22 @@
 
 ### Fase 11: SEO Básico y Social Preview
 
-- [ ] **Metadata global** — agregar `metadataBase`, title template, description, Open Graph y Twitter Card
-- [ ] **Home** — ajustar metadata a clientes objetivo, sin perseguir SEO avanzado
-- [ ] **Detalle de proyecto** — implementar metadata por proyecto (`generateMetadata`)
-- [ ] **Detalle de proyecto** — agregar canonical por ruta
-- [ ] **SEO técnico** — generar `sitemap.xml`
-- [ ] **SEO técnico** — generar `robots.txt` propio
-- [ ] **Social preview** — crear o definir imagen Open Graph para compartir por WhatsApp / LinkedIn
-- [ ] **Dominio** — decidir si comprar dominio propio antes de usar el portfolio como carta principal
+- [x] **Metadata global** — agregar `metadataBase`, title template, description, Open Graph y Twitter Card
+  > `app/layout.tsx` + `lib/site.ts` (`siteUrl`, `siteMetadata`).
+- [x] **Home** — ajustar metadata a clientes objetivo, sin perseguir SEO avanzado
+  > `app/page.tsx` con description orientada a negocios locales.
+- [x] **Detalle de proyecto** — implementar metadata por proyecto (`generateMetadata`)
+  > Título, description (`seoDescription` / `summary` / `impact`), OG con preview.
+- [x] **Detalle de proyecto** — agregar canonical por ruta
+  > `alternates.canonical` en `generateMetadata`.
+- [x] **SEO técnico** — generar `sitemap.xml`
+  > `app/sitemap.ts` (home + proyectos).
+- [x] **SEO técnico** — generar `robots.txt` propio
+  > `app/robots.ts` con enlace al sitemap.
+- [x] **Social preview** — crear o definir imagen Open Graph para compartir por WhatsApp / LinkedIn
+  > `app/opengraph-image.tsx` tipográfico (home); proyectos usan `/{slug}-preview.webp`.
+- [x] **Dominio** — decidir si comprar dominio propio antes de usar el portfolio como carta principal
+  > Diferido: usar `*.pages.dev` con `NEXT_PUBLIC_SITE_URL`. Dominio propio cuando sea carta principal frecuente.
 
 ### Fase 12: Accesibilidad, Mobile y Calidad Técnica
 

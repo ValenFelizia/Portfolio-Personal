@@ -15,6 +15,7 @@ export interface ProjectFrontmatter {
   logoScale?: number;
   summary?: string;
   impact?: string;
+  seoDescription?: string;
 }
 
 export interface Project {
@@ -83,6 +84,7 @@ function parseFrontmatter(data: Record<string, unknown>, filename: string): Proj
     logoScale: parseOptionalNumber(data.logoScale),
     summary: parseOptionalString(data.summary),
     impact: parseOptionalString(data.impact),
+    seoDescription: parseOptionalString(data.seoDescription),
   };
 }
 

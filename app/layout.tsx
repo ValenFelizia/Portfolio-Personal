@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { siteMetadata, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,9 +16,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Valentín Felizia | Desarrollo Web",
-  description:
-    "Desarrollo web enfocado en procesos y negocio. Construyo sitios rápidos y comercios electrónicos escalables que entregan resultados reales.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: siteMetadata.title,
+    template: `%s | ${siteMetadata.name}`,
+  },
+  description: siteMetadata.description,
+  openGraph: {
+    type: "website",
+    locale: siteMetadata.locale,
+    url: siteUrl,
+    siteName: siteMetadata.name,
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({

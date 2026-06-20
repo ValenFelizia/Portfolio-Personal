@@ -1,9 +1,24 @@
+import type { Metadata } from "next";
 import { AboutMinimal } from "@/components/AboutMinimal";
 import { Contact } from "@/components/Contact";
 import { Hero } from "@/components/Hero";
 import { ProcessOffer } from "@/components/ProcessOffer";
 import { ProjectCard } from "@/components/ProjectCard";
 import { getProjects } from "@/lib/getProjects";
+import { siteMetadata } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: siteMetadata.title,
+  description: siteMetadata.description,
+  openGraph: {
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    url: "/",
+  },
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default async function Home() {
   const projects = await getProjects();
