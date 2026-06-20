@@ -24,18 +24,21 @@ export default async function Home() {
   const projects = await getProjects();
 
   return (
-    <main className="flex flex-1 flex-col">
+    <main id="main-content" className="flex flex-1 flex-col">
       <Hero />
       <ProcessOffer />
 
       <section
         id="proyectos"
-        aria-label="Proyectos"
+        aria-labelledby="proyectos-heading"
         className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 pb-24 pt-8 sm:pb-32 sm:pt-12"
       >
         <p className="text-sm uppercase tracking-widest text-muted">
           Trabajos destacados
         </p>
+        <h2 id="proyectos-heading" className="sr-only">
+          Trabajos destacados
+        </h2>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted">
           Proyectos reales que desarrollé y publiqué. Cada uno
           resolvió un problema concreto de negocio.
@@ -59,6 +62,7 @@ export default async function Home() {
                 logoPath={project.frontmatter.logoPath}
                 logoScale={project.frontmatter.logoScale}
                 impact={project.frontmatter.impact}
+                priorityImage={index === 0}
               />
             </div>
           ))}

@@ -3,6 +3,9 @@ import type { LucideIcon } from "lucide-react";
 import type { ComponentPropsWithoutRef } from "react";
 import { siteContact } from "@/lib/site";
 
+const contactLinkFocus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+
 function GitHubIcon(props: ComponentPropsWithoutRef<"svg">) {
   return (
     <svg
@@ -89,11 +92,15 @@ export function Contact() {
   return (
     <section
       id="contacto"
-      className="mx-auto w-full max-w-5xl scroll-mt-24 px-6 py-21 sm:py-28"
+      aria-labelledby="contact-heading"
+      className="section-defer mx-auto w-full max-w-5xl scroll-mt-24 px-6 py-20 sm:py-28"
     >
       <div className="space-y-4 text-center">
         <p className="text-sm uppercase tracking-widest text-muted">Contacto</p>
-        <h2 className="text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
+        <h2
+          id="contact-heading"
+          className="text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
+        >
           ¿Tenés un proyecto en mente?
         </h2>
         <p className="mx-auto max-w-xl text-base leading-relaxed text-muted">
@@ -116,8 +123,8 @@ export function Contact() {
               rel={isExternal ? "noopener noreferrer" : undefined}
               className={
                 isPrimary
-                  ? "group flex items-center gap-4 rounded-xl border border-accent/50 bg-accent/10 p-5 transition-all duration-300 hover:border-accent hover:bg-accent/15"
-                  : "group flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:border-accent/40 hover:bg-accent/5"
+                  ? `group flex items-center gap-4 rounded-xl border border-accent/50 bg-accent/10 p-5 transition-all duration-300 hover:border-accent hover:bg-accent/15 ${contactLinkFocus}`
+                  : `group flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:border-accent/40 hover:bg-accent/5 ${contactLinkFocus}`
               }
             >
               <span

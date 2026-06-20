@@ -13,7 +13,7 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link
           href="/"
-          className="shrink-0 truncate text-sm font-semibold tracking-tight text-foreground transition-colors duration-300 hover:text-accent sm:text-base"
+          className="shrink-0 truncate text-sm font-semibold tracking-tight text-foreground transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:text-base"
         >
           Valentín Felizia
         </Link>
@@ -25,7 +25,7 @@ export function Header() {
                 <NavAnchorLink
                   href={link.href}
                   label={link.label}
-                  className="text-xs text-muted transition-colors duration-300 hover:text-accent sm:text-sm"
+                  className="text-xs text-muted transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:text-sm"
                 />
               </li>
             ))}

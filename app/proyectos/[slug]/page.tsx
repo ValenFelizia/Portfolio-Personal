@@ -92,7 +92,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   } as CSSProperties;
 
   return (
-    <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-16 sm:py-24">
+    <main id="main-content" className="mx-auto w-full max-w-3xl flex-1 px-6 py-16 sm:py-24">
       <Link
         href="/"
         className="group inline-flex items-center gap-2 rounded-md px-1 py-1 -ml-1 text-sm text-muted transition-colors duration-300 hover:text-foreground"

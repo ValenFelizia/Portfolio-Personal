@@ -1,3 +1,5 @@
+import { imageConfig } from "@/lib/imageConfig";
+
 export interface AboutMinimalProps {
   imageSrc?: string;
   imageAlt?: string;
@@ -10,7 +12,8 @@ export function AboutMinimal({
   return (
     <section
       id="sobre-mi"
-      className="mx-auto w-full max-w-5xl scroll-mt-24 px-6 py-24 motion-safe:animate-fade-in-up motion-safe:[animation-delay:200ms] sm:py-32"
+      aria-labelledby="sobre-mi-heading"
+      className="section-defer mx-auto w-full max-w-5xl scroll-mt-24 px-6 py-24 motion-safe:animate-fade-in-up motion-safe:[animation-delay:200ms] sm:py-32"
     >
       <div className="grid items-center gap-12 md:grid-cols-[minmax(0,11rem)_1fr] md:gap-16">
         <div className="mx-auto w-full max-w-[11rem] md:mx-0">
@@ -19,6 +22,10 @@ export function AboutMinimal({
             <img
               src={imageSrc}
               alt={imageAlt}
+              width={imageConfig.profile.width}
+              height={imageConfig.profile.height}
+              loading="lazy"
+              decoding="async"
               className="aspect-square w-full rounded-full border border-white/10 object-cover opacity-80"
             />
           ) : (
@@ -31,7 +38,10 @@ export function AboutMinimal({
 
         <div className="space-y-5 text-center md:text-left">
           <p className="text-sm uppercase tracking-widest text-muted">Sobre mí</p>
-          <h2 className="text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
+          <h2
+            id="sobre-mi-heading"
+            className="text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
+          >
             Entiendo tu negocio antes de escribir código
           </h2>
           <div className="space-y-4 text-base leading-relaxed text-muted">
