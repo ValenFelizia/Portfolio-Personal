@@ -28,3 +28,6 @@ export const siteContact = {
   linkedin: "https://linkedin.com/in/valentín-felizia-103059212",
   github: "https://github.com/ValenFelizia",
 };
+
+/** Portfolio repository (open source). */
+export const siteRepoUrl = "https://github.com/ValenFelizia/Portfolio-Personal";

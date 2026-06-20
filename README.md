@@ -1,36 +1,170 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Personal — Valentín Felizia
 
-## Getting Started
+A client-first portfolio for a freelance web developer (myself). The live site showcases real projects and case studies; this repository is the open-source implementation. If you want to contribute, feel free to send a PR :)
 
-First, run the development server:
+**Live site:** [portfolio-vfelizia.pages.dev](https://portfolio-vfelizia.pages.dev)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Goals
+
+- **For my potential clients:** explain what I do, how and who I work with, and how to start a conversation (WhatsApp-first in my case).
+- **For developers:** a clear static Next.js setup, MDX-driven case studies that are easy to add (the site is built on being modular), and spec-driven workflow (`specs.md`, `todo.md`).
+
+The UI and copy are in **Spanish** (`lang="es"`). I don't plan to translate it yet. Documentation in this repo is in **English**.
+
+---
+
+## Stack
+
+
+| Layer     | Technology                                                                       |
+| --------- | -------------------------------------------------------------------------------- |
+| Framework | [Next.js 16](https://nextjs.org) (App Router, static export). NOTE: It was originally planned to be Astro, but I had experience already with Next.js. Astro however feels like the right thing to work with regarding static, content-heavy sites like a portfolio.                   |
+| Content   | Local `.mdx` files + [gray-matter](https://github.com/jonschlinkert/gray-matter) |
+| Rendering | [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) (RSC)            |
+| Styling   | [Tailwind CSS v4](https://tailwindcss.com) (`@theme` in `app/globals.css`)       |
+| Icons     | [lucide-react](https://lucide.dev)                                               |
+| Hosting   | [Cloudflare Pages](https://pages.cloudflare.com) (static `out/`)                 |
+
+
+---
+
+## Architecture (SDD)
+
+This project follows **Spec-Driven Development (SDD)**:
+
+1. `**specs.md`** — product and technical source of truth.
+2. `**todo.md**` — phased implementation checklist.
+
+### Folder structure
+
+```
+app/              Routes (home, /proyectos/[slug], sitemap, robots, OG image)
+components/       UI blocks (Hero, ProjectCard, Contact, etc.)
+content/          Case study MDX files
+lib/              Server-only data (getProjects, site config, image config)
+public/           Static assets (previews, logos, _headers for Cloudflare)
+scripts/          Maintenance scripts (image optimization)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Data flow
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. `lib/getProjects.ts` reads `.mdx` files from `/content` at build time.
+2. The home page lists projects via `ProjectCard`.
+3. `/proyectos/[slug]` renders the MDX body with `MDXComponents`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+There is no runtime database or CMS for the portfolio itself—only static files. Didn't feel like the right thing to do if the site is going to be run by actual developers.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Getting started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Prerequisites
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Node.js 20+
+- npm
 
-## Deploy on Vercel
+### Install and run
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm install
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](http://localhost:3000).
+
+### Build (static export)
+
+```bash
+npm run build
+```
+
+Output is written to `out/`. This matches the Cloudflare Pages production build.
+
+### Other scripts
+
+
+| Script                    | Purpose                                                   |
+| ------------------------- | --------------------------------------------------------- |
+| `npm run lint`            | ESLint                                                    |
+| `npm run optimize-images` | Compress `profile.webp` and `*-preview.webp` in `/public` |
+
+
+Run `optimize-images` after adding or replacing preview images. Dimensions are documented in `lib/imageConfig.ts`.
+
+---
+
+## Environment variables
+
+Create `.env.local` from the example (optional for local dev):
+
+```bash
+cp .env.example .env.local
+```
+
+
+| Variable               | Purpose                                                               |
+| ---------------------- | --------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL` | Public site URL for metadata, sitemap, canonical URLs, and Open Graph |
+
+
+**Cloudflare Pages:** set `NEXT_PUBLIC_SITE_URL` in **Settings → Environment variables** (Production) to your `*.pages.dev` URL or custom domain, then redeploy. It is injected at **build time**.
+
+---
+
+## Adding a new case study
+
+1. **Create** `content/your-slug.mdx` with required frontmatter:
+
+```yaml
+---
+title: "Project title"
+client: "Client or product name"
+date: "2026"
+role: "Fullstack"
+liveUrl: "https://..."
+repoUrl: "https://github.com/..."
+techStack: "Next.js, Tailwind CSS"
+---
+```
+
+Optional fields: `brandColor`, `logoPath`, `logoScale`, `impact`, `summary`, `seoDescription`.
+
+1. **Write** the body with sections such as `## El Problema`, `## La Solución y Arquitectura`, `## El Impacto`.
+2. **Add assets** in `/public`:
+  - `your-slug-preview.webp` (project screenshot)
+  - `logos/your-slug.svg` if needed
+3. **Run** `npm run optimize-images`.
+4. **Verify** with `npm run build` — the route `/proyectos/your-slug` is generated automatically.
+
+---
+
+## Deploy on Cloudflare Pages
+
+
+| Setting                | Value           |
+| ---------------------- | --------------- |
+| Build command          | `npm run build` |
+| Build output directory | `out`           |
+| Node version           | 20+             |
+
+
+Security and cache headers for static assets are defined in `public/_headers`.
+
+---
+
+## Audience and open source
+
+- **Clients** are the primary audience on the live site.
+- **GitHub** is a secondary channel: proof of clean code, SDD workflow, and how case studies are authored.
+
+This repository is public under the [MIT License](LICENSE). The design and copy reflect a personal brand; reuse the code freely, but avoid presenting it as your own portfolio without replacing the content.
+
+---
+
+## Related docs
+
+- `[specs.md](specs.md)` — full technical and product specification (Spanish)
+- `[todo.md](todo.md)` — implementation roadmap and phase checklist
+

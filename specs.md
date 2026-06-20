@@ -184,8 +184,8 @@ Configuración esperada:
 
 Para publicar el repo en GitHub:
 
-- `README.md` debe explicar el objetivo real del proyecto, stack, arquitectura, SDD y workflow MDX.
-- El README no debe quedar como template de `create-next-app`.
-- `todo.md` y `specs.md` pueden publicarse si se los considera parte del proceso de trabajo.
-- Limpiar assets default no usados antes de publicar.
-- Decidir licencia o aclaración de uso del código/diseño.
+- `README.md` (inglés) explica objetivo, stack, arquitectura, SDD, workflow MDX y deploy en Cloudflare Pages.
+- `LICENSE` (MIT) — código reutilizable; el contenido de marca es personal.
+- `todo.md` y `specs.md` forman parte del proceso de trabajo publicado.
+- Assets default de `create-next-app` eliminados (`vercel.svg`, `file.svg`, `window.svg`).
+- `.env.example` documenta `NEXT_PUBLIC_SITE_URL`; `.env*` local en `.gitignore`.

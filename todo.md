@@ -75,8 +75,8 @@
 - [x] CTA del Hero apunta a `#contacto`
 - [x] Stagger de entrada en grilla de proyectos
 - [x] Smooth scroll + `scroll-padding-top` para header sticky
-- [ ] Decidir foto de perfil final vs. placeholder actual
-- [ ] Actualizar datos de contacto reales en `lib/site.ts`
+- [x] Decidir foto de perfil final vs. placeholder actual
+- [x] Actualizar datos de contacto reales en `lib/site.ts`
 
 ---
 
@@ -96,120 +96,49 @@
 ### Fase 8: Posicionamiento Comercial de la Home
 
 - [x] **Hero** — convertir la frase principal en un `h1` claro, específico y orientado a clientes
-  > Implementado: `h1` orientado a clientes con gradiente en "negocios locales".
-- [x] **Hero** — agregar subtítulo que explique para quién trabajo:
-  - [x] Negocios locales
-  - [x] Emprendimientos que venden por WhatsApp
-  - [x] Marcas que necesitan presencia digital confiable
-  > Subtítulo en párrafo `text-muted` debajo del `h1`.
-- [x] **Hero** — mantener CTA principal hacia contacto, con foco en WhatsApp / primera charla
-  > CTA "Charlemos de tu proyecto" apunta a `#contacto` (WhatsApp destacado queda para Fase 10).
-- [x] **Home** — agregar sección breve de oferta o proceso:
-  - [x] Entender el negocio
-  - [x] Diseñar el flujo
-  - [x] Construir y lanzar
-  > Nuevo componente `ProcessOffer.tsx`, insertado entre Hero y proyectos.
-- [x] **AboutMinimal** — reescribir el texto para traducir "ingeniería y procesos" a beneficios concretos para el cliente
-  > Nuevo `h2` y párrafos enfocados en beneficios operativos y decisiones técnicas sin comisiones.
-- [x] **Home** — evitar wording que sugiera una cartera grande de clientes externos; presentar los casos como proyectos reales y publicados
-  > Línea intro bajo "Trabajos destacados" en `page.tsx`.
+- [x] **Hero** — agregar subtítulo que explique para quién trabajo (negocios locales, WhatsApp, presencia digital)
+- [x] **Hero** — mantener CTA principal hacia contacto
+- [x] **Home** — agregar sección breve de oferta o proceso (`ProcessOffer.tsx`)
+- [x] **AboutMinimal** — reescribir el texto orientado a beneficios del cliente
+- [x] **Home** — intro honesta bajo "Trabajos destacados"
 
 ### Fase 9: Casos de Estudio con Evidencia Observable
 
-- [x] **Felisa** — reforzar el caso como catálogo vivo + pedidos por WhatsApp + autogestión + 0% comisiones
-  > MDX reescrito con restricción (WhatsApp manual, comisiones), decisión (catálogo + CMS) y link verificable.
-- [x] **787 Rumbos** — reforzar el caso como presencia oficial + confianza + punto de contacto verificable
-  > MDX reescrito con dolor de confianza en turismo y landing como carta de presentación.
-- [x] **MDX** — agregar evidencia observable sin inventar métricas:
-  - [x] Restricción inicial del negocio
-  - [x] Decisión técnica tomada
-  - [x] Resultado visible en producción
-  - [x] Mejora concreta para el día a día del cliente
-  > Tejido en las 3 secciones de cada caso; links al sitio en vivo al final de El Impacto.
-- [x] **MDX** — reducir frases demasiado absolutas si no hay números que las sostengan (`drásticamente`, `por completo`, etc.)
-  > Eliminados términos absolutos en Felisa; tono honesto en ambos casos.
-- [x] **Detalle de proyecto** — mostrar links a `liveUrl` y `repoUrl` desde el frontmatter
-  > Botón primario "Ver sitio en producción" + link secundario "Código en GitHub" en cabecera.
-- [x] **Detalle de proyecto** — agregar CTA final: "¿Tenés un problema parecido?" + contacto
-  > Footer con CTA `/#contacto` al final del artículo.
-- [x] **ProjectCard** — evaluar invertir prioridad: card hacia caso de estudio y link secundario hacia sitio en vivo
-  > Overlay `Link` al caso de estudio; enlace visible "Ver sitio en vivo" externo.
-- [x] **ProjectCard** — considerar una línea de impacto visible por proyecto
-  > Campo `impact` en frontmatter + borde izquierdo con color de marca en la card.
+- [x] **Felisa** y **787 Rumbos** — MDX reforzado con dolores y evidencia observable
+- [x] **MDX** — restricción, decisión, resultado y mejora del día a día; tono sin métricas inventadas
+- [x] **Detalle de proyecto** — links a sitio en producción + CTA final de contacto
+- [x] **ProjectCard** — prioridad al caso de estudio + línea `impact` en frontmatter
 
 ### Fase 10: Conversión y Contacto
 
-- [x] **Contact** — destacar WhatsApp como CTA principal, no como una tarjeta más
-  > Card WhatsApp con borde/fondo accent y badge "Canal recomendado" dentro del grid 2×2.
-- [x] **Contact** — agregar mensaje prellenado de WhatsApp para bajar fricción
-  > `getWhatsAppUrl()` y `whatsappPrefillMessage` en `lib/site.ts`.
-- [x] **Contact** — explicar el siguiente paso después del contacto:
-  - [x] Primera charla breve
-  - [x] Entender el negocio
-  - [x] Detectar si una web realmente ayuda
-  > Bloque "Después de escribirme" con 3 pasos entre intro y grid de canales.
-- [x] **Contact** — revisar si GitHub debe seguir al mismo nivel que WhatsApp/Email/LinkedIn o pasar al footer
-  > Decidido: GitHub permanece en el grid 2×2 (simetría y señal técnica sin competir con WhatsApp).
-- [x] **Header** — revisar navegación mobile para que no se sienta apretada en pantallas chicas
-  > `gap-4`, `text-xs` en mobile, `px-4` y `truncate` en logo.
-- [x] **Footer** — considerar links secundarios a GitHub, LinkedIn y contacto
-  > Decidido: no agregar links; footer minimal (canales ya en Contact).
+- [x] **Contact** — WhatsApp destacado en grid + mensaje prellenado (`getWhatsAppUrl`)
+- [x] **Contact** — bloque "Después de escribirme" debajo del grid
+- [x] **Contact** — GitHub permanece en grid; footer sin links secundarios (decisión de diseño)
+- [x] **Header** — ajustes mobile (Fase 10)
 
 ### Fase 11: SEO Básico y Social Preview
 
-- [x] **Metadata global** — agregar `metadataBase`, title template, description, Open Graph y Twitter Card
-  > `app/layout.tsx` + `lib/site.ts` (`siteUrl`, `siteMetadata`).
-- [x] **Home** — ajustar metadata a clientes objetivo, sin perseguir SEO avanzado
-  > `app/page.tsx` con description orientada a negocios locales.
-- [x] **Detalle de proyecto** — implementar metadata por proyecto (`generateMetadata`)
-  > Título, description (`seoDescription` / `summary` / `impact`), OG con preview.
-- [x] **Detalle de proyecto** — agregar canonical por ruta
-  > `alternates.canonical` en `generateMetadata`.
-- [x] **SEO técnico** — generar `sitemap.xml`
-  > `app/sitemap.ts` (home + proyectos).
-- [x] **SEO técnico** — generar `robots.txt` propio
-  > `app/robots.ts` con enlace al sitemap.
-- [x] **Social preview** — crear o definir imagen Open Graph para compartir por WhatsApp / LinkedIn
-  > `app/opengraph-image.tsx` tipográfico (home); proyectos usan `/{slug}-preview.webp`.
-- [x] **Dominio** — decidir si comprar dominio propio antes de usar el portfolio como carta principal
-  > Diferido: usar `*.pages.dev` con `NEXT_PUBLIC_SITE_URL`. Dominio propio cuando sea carta principal frecuente.
+- [x] **Metadata global**, home, `generateMetadata` por proyecto, canonical, sitemap, robots
+- [x] **Social preview** — `opengraph-image.tsx` tipográfico + previews en proyectos
+- [x] **Dominio** — diferido; `NEXT_PUBLIC_SITE_URL` en Cloudflare
 
 ### Fase 12: Accesibilidad, Mobile y Calidad Técnica
 
-- [x] **Accesibilidad** — agregar skip link para saltar al contenido principal
-  > `SkipLink` en layout + `#main-content` en páginas.
-- [x] **Accesibilidad** — revisar `aria-labelledby` en secciones principales
-  > Proyectos, Contact, Sobre mí, ProcessOffer (ya tenía).
-- [x] **Accesibilidad** — revisar foco visible en CTA del Hero y enlaces importantes
-  > `:focus-visible` global en `globals.css` + rings en CTAs y nav.
-- [x] **UI** — revisar `py-21` en `Contact` y reemplazar si no pertenece a la escala de Tailwind
-  > Reemplazado por `py-20`.
-- [x] **UI** — revisar experiencia mobile del header, hero, cards y contacto
-  > Ajustes previos Fase 10; foco y defer en secciones inferiores.
-- [x] **Performance** — medir Lighthouse mobile y desktop después de los cambios
-  > Lighthouse mobile simulado: Performance 95, Accessibility 96, Best Practices 100.
-- [x] **Performance** — revisar peso/dimensiones de imágenes (`profile.webp`, previews, logos)
-  > `npm run optimize-images` (sharp): profile ~14KB, felisa ~24KB, rumbos ~78KB. `lib/imageConfig.ts` + lazy loading.
-- [x] **Seguridad** — evaluar `_headers` para Cloudflare Pages:
-  - [x] `X-Content-Type-Options`
-  - [x] `Referrer-Policy`
-  - [x] `Permissions-Policy`
-  - [x] CSP conservadora si no genera fricción
-  > `public/_headers` con headers seguros + cache en assets. Sin CSP (evitar fricción con export estático).
-- [x] **404** — considerar página `not-found.tsx` con estilo del portfolio
-  > `app/not-found.tsx` con CTA al inicio.
+- [x] **Accesibilidad** — skip link, `aria-labelledby`, `:focus-visible`
+- [x] **UI** — `py-20` en Contact; mobile revisado en fases previas
+- [x] **Performance** — Lighthouse ~95/96/100; `optimize-images` + lazy loading
+- [x] **Seguridad** — `public/_headers` (sin CSP conservadora)
+- [x] **404** — `app/not-found.tsx`
 
 ### Fase 13: Repo Público y Documentación
 
-- [ ] **README** — reemplazar template de Next.js por documentación propia del proyecto
-- [ ] **README** — explicar objetivo, stack, arquitectura, SDD y cómo correr el proyecto
-- [ ] **README** — documentar cómo agregar un nuevo proyecto MDX
-- [ ] **README** — ajustar deploy a Cloudflare Pages (`npm run build` + output `out`)
-- [ ] **README** — aclarar que el portfolio prioriza clientes y usa GitHub como respaldo técnico
-- [ ] **Repo público** — limpiar assets default no usados (`vercel.svg`, `file.svg`, `window.svg`) si ya no hacen falta
-- [ ] **Repo público** — decidir licencia o nota de uso del código/diseño
-- [ ] **Specs** — mantener `specs.md` actualizado si cambia la estructura de datos o componentes
-- [ ] **Todo** — mantener esta V1.1 como checklist vivo para trabajar desde el IDE o con agentes
+- [x] **README** — documentación en inglés: objetivo, stack, SDD, MDX, deploy Cloudflare
+- [x] **README** — prioriza clientes en el sitio; GitHub como respaldo técnico
+- [x] **Repo público** — eliminados `vercel.svg`, `file.svg`, `window.svg`
+- [x] **Repo público** — `LICENSE` (MIT) + nota de marca en README
+- [x] **Specs** — §10 actualizado para repo público
+- [x] **Todo** — checklist V1.1 sincronizado
+- [x] **`.gitignore`** — `.env.example` permitido; `.cursor/`, reportes Lighthouse ignorados
 
 ### Fase 14: Verificación Final V1.1
 
@@ -242,5 +171,5 @@
 - [x] `next.config.ts` — `output: "export"` para generación de HTML estático
 - [x] `next.config.ts` — `images.unoptimized: true` (compatible con hosting estático)
 - [x] Mantener `transpilePackages: ["next-mdx-remote"]`
-- [ ] Commit y push a GitHub
-- [ ] Configurar proyecto en Cloudflare Pages (build + output directory)
+- [x] Commit y push a GitHub
+- [x] Configurar proyecto en Cloudflare Pages (build + output directory)
