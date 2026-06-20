@@ -201,16 +201,18 @@
 
 ### Fase 16: Hero Más Corto y Más Propio
 
-- [ ] **Hero** — simplificar `h1` a:
-  - [ ] "Desarrollo web enfocado en procesos y negocio."
-- [ ] **Hero** — mover el valor concreto al subtítulo
-- [ ] **Hero** — redactar subtítulo que fusione:
-  - [ ] Negocios locales
-  - [ ] Ventas por WhatsApp
-  - [ ] Catálogos / tiendas online
-  - [ ] Presencia digital confiable
-- [ ] **Hero** — evitar frases genéricas como "vender mejor", "web rápida y fácil de usar" si no agregan precisión
-- [ ] **Hero** — mantener CTA principal "Hablemos de tu proyecto"
+> **Copy aplicado:** h1 = lema solo; subtítulo conversacional con negocios locales, ventas por WhatsApp, catálogo/tienda y confianza digital.
+
+- [x] **Hero** — simplificar `h1` a:
+  - [x] "Desarrollo web enfocado en procesos y negocio."
+- [x] **Hero** — mover el valor concreto al subtítulo
+- [x] **Hero** — redactar subtítulo que fusione:
+  - [x] Negocios locales
+  - [x] Ventas por WhatsApp
+  - [x] Catálogos / tiendas online
+  - [x] Presencia digital confiable
+- [x] **Hero** — evitar frases genéricas como "vender mejor", "web rápida y fácil de usar" si no agregan precisión
+- [x] **Hero** — mantener CTA principal "Hablemos de tu proyecto"
 
 ### Fase 17: Reducir Repetición en Home
 

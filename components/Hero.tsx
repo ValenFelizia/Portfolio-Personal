@@ -10,14 +10,12 @@ export function Hero() {
         <h1 className="text-balance text-3xl font-medium leading-tight tracking-tight text-foreground sm:text-4xl sm:leading-tight">
           Desarrollo web enfocado en{" "}
           <span className="text-gradient-accent">procesos y negocio</span>.
-          Ayudo a negocios locales a vender
-          mejor y generar confianza con una web rápida y fácil de usar.
         </h1>
 
         <p className="mt-6 max-w-2xl text-balance text-base leading-relaxed text-muted sm:text-lg">
-          Trabajo con emprendimientos que atienden por WhatsApp, comercios que
-          necesitan un catálogo/tienda online y marcas que buscan una presencia digital
-          clara y confiable.
+          Trabajo con negocios locales que venden por WhatsApp, necesitan un
+          catálogo o tienda online y buscan una presencia digital clara y
+          confiable.
         </p>
 
         <a
