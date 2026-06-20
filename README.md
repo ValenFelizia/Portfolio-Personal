@@ -18,14 +18,14 @@ The UI and copy are in **Spanish** (`lang="es"`). I don't plan to translate it y
 ## Stack
 
 
-| Layer     | Technology                                                                       |
-| --------- | -------------------------------------------------------------------------------- |
-| Framework | [Next.js 16](https://nextjs.org) (App Router, static export). NOTE: It was originally planned to be Astro, but I had experience already with Next.js. Astro however feels like the right thing to work with regarding static, content-heavy sites like a portfolio.                   |
-| Content   | Local `.mdx` files + [gray-matter](https://github.com/jonschlinkert/gray-matter) |
-| Rendering | [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) (RSC)            |
-| Styling   | [Tailwind CSS v4](https://tailwindcss.com) (`@theme` in `app/globals.css`)       |
-| Icons     | [lucide-react](https://lucide.dev)                                               |
-| Hosting   | [Cloudflare Pages](https://pages.cloudflare.com) (static `out/`)                 |
+| Layer     | Technology                                                                                                                                                                                                                                                          |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Framework | [Next.js 16](https://nextjs.org) (App Router, static export). NOTE: It was originally planned to be Astro, but I had experience already with Next.js. Astro however feels like the right thing to work with regarding static, content-heavy sites like a portfolio. |
+| Content   | Local `.mdx` files + [gray-matter](https://github.com/jonschlinkert/gray-matter)                                                                                                                                                                                    |
+| Rendering | [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) (RSC)                                                                                                                                                                                               |
+| Styling   | [Tailwind CSS v4](https://tailwindcss.com) (`@theme` in `app/globals.css`)                                                                                                                                                                                          |
+| Icons     | [lucide-react](https://lucide.dev)                                                                                                                                                                                                                                  |
+| Hosting   | [Cloudflare Pages](https://pages.cloudflare.com) (static `out/`)                                                                                                                                                                                                    |
 
 
 ---
@@ -35,7 +35,7 @@ The UI and copy are in **Spanish** (`lang="es"`). I don't plan to translate it y
 This project follows **Spec-Driven Development (SDD)**:
 
 1. `**specs.md`** — product and technical source of truth.
-2. `**todo.md**` — phased implementation checklist.
+2. `**todo.md`** — phased implementation checklist.
 
 ### Folder structure
 
@@ -159,7 +159,7 @@ Security and cache headers for static assets are defined in `public/_headers`.
 - **Clients** are the primary audience on the live site.
 - **GitHub** is a secondary channel: proof of clean code, SDD workflow, and how case studies are authored.
 
-This repository is public under the [MIT License](LICENSE). The design and copy reflect a personal brand; reuse the code freely, but avoid presenting it as your own portfolio without replacing the content.
+This repository is public under the [MIT License](LICENSE). The design and copy reflect a personal brand; reuse the code freely. I'm not going to ask you to mention me in your project, but it's appreciated anyway if you decide to do so.
 
 ---
 

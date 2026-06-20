@@ -162,6 +162,115 @@
 
 ---
 
+## V1.2: Pulido Final de Conversión y Confianza
+
+> Segunda auditoría posterior a V1.1. Objetivo: corregir fricciones finas que todavía hacen que el portfolio se sienta un poco verde, repetitivo o demasiado técnico para clientes no técnicos.
+
+### Notas de decisión
+
+- **Footer:** mantener la idea actual. El link open source en GitHub no se considera un problema comercial; solo pulir wording si se siente necesario.
+- **Open Graph:** si el preview al compartir por WhatsApp se ve correcto, no rehacerlo por estética. Solo investigar si `/opengraph-image` o el build fallan realmente.
+- **Hero:** recuperar el lema original como frase principal: "Desarrollo web enfocado en procesos y negocio".
+- **Subtítulo del Hero:** debe llevar lo concreto: negocios locales, WhatsApp, catálogo/tienda online, confianza digital. Evitar tono corporativo.
+- **Prioridad:** primero bugs públicos y conversión; después detalles de repo/SEO avanzados.
+
+### Fase 15: Bugs Públicos y Verificación Técnica
+
+- [ ] **Sitemap** — investigar por qué `https://portfolio-vfelizia.pages.dev/sitemap.xml` devuelve `500`
+- [ ] **Sitemap** — corregir generación o reemplazar por una solución estática compatible con Cloudflare Pages
+- [ ] **Open Graph** — verificar si `/opengraph-image` devuelve `500` en producción o si solo falla el endpoint directo
+- [ ] **Open Graph** — si el endpoint falla de verdad, evaluar reemplazar `opengraph-image.tsx` por una imagen estática en `/public`
+- [ ] **Open Graph** — evitar dependencia externa de fuente (`fonts.bunny.net`) si afecta build/reproducibilidad
+- [ ] **Favicon** — agregar `favicon.ico` o `app/icon.*`
+- [ ] **LinkedIn** — confirmar URL final y usar versión confiable/ASCII si corresponde
+- [ ] **README** — revisar links a docs (`docs/specs.md`, `docs/todo.md`) para evitar enlaces rotos
+- [ ] **AGENTS** — actualizar o limpiar referencias desactualizadas del hero inicial
+- [ ] **CI opcional** — evaluar workflow simple de GitHub Actions para `npm run lint` + `npm run build`
+
+### Fase 16: Hero Más Corto y Más Propio
+
+- [ ] **Hero** — simplificar `h1` a:
+  - [ ] "Desarrollo web enfocado en procesos y negocio."
+- [ ] **Hero** — mover el valor concreto al subtítulo
+- [ ] **Hero** — redactar subtítulo que fusione:
+  - [ ] Negocios locales
+  - [ ] Ventas por WhatsApp
+  - [ ] Catálogos / tiendas online
+  - [ ] Presencia digital confiable
+- [ ] **Hero** — evitar frases genéricas como "vender mejor", "web rápida y fácil de usar" si no agregan precisión
+- [ ] **Hero** — mantener CTA principal "Hablemos de tu proyecto"
+
+### Fase 17: Reducir Repetición en Home
+
+- [ ] **Home** — revisar si `ProcessOffer` y "Después de escribirme" están contando lo mismo
+- [ ] **Opción recomendada** — mantener **Cómo trabajo** como sección principal de proceso
+- [ ] **Contact** — convertir "Después de escribirme" en una versión más corta y concreta, no otro proceso completo
+- [ ] **Contact** — posible reemplazo: una línea de expectativa + 2 bullets breves:
+  - [ ] "Primera charla sin compromiso"
+  - [ ] "Si una web no tiene sentido para tu caso, te lo digo"
+- [ ] **Contact** — evitar repetir "entender operación / revisar si una web ayuda" con las mismas palabras del proceso
+- [ ] **Copy** — corregir "primer charla" por "primera charla"
+
+### Fase 18: Cards Orientadas a Clientes
+
+- [ ] **ProjectCard** — hacer visible el CTA "Leer caso de estudio"
+- [ ] **ProjectCard** — mantener "Visitar sitio publicado" como acción secundaria
+- [ ] **ProjectCard** — evitar que la acción visual más fuerte saque al usuario del portfolio antes de leer el caso
+- [ ] **Home** — reemplazar o esconder tech pills en cards para clientes no técnicos
+- [ ] **Home** — usar tags/beneficios de negocio en vez de stack:
+  - [ ] Felisa: "Catálogo autogestionable", "Pedidos por WhatsApp", "Sin comisiones"
+  - [ ] 787 Rumbos: "Sitio institucional", "Contacto verificable", "Confianza online"
+- [ ] **Detalle de proyecto** — mantener stack técnico en detalle o sección secundaria
+- [ ] **Detalle de proyecto** — mostrar `repoUrl` como respaldo técnico discreto
+
+### Fase 19: Casos y Prueba de Confianza
+
+- [ ] **Felisa** — revisar si el subdominio `vercel.app` debilita el caso
+- [ ] **Felisa** — evaluar dominio propio o aclarar que es un producto real en producción aunque no tenga dominio propio todavía
+- [ ] **Felisa** — reemplazar `role: "Tech Lead & Fullstack"` por una formulación más natural:
+  - [ ] "Diseño y desarrollo fullstack"
+  - [ ] "Desarrollo web integral"
+- [ ] **787 Rumbos** — hacer el impacto más concreto en card y/o caso
+- [ ] **Casos** — agregar `seoDescription` o `summary` dedicados si mejora metadata y previews
+- [ ] **Prueba social** — evaluar si tiene sentido agregar una cita breve, captura o nota de contexto sin forzar testimonios
+- [ ] **Prueba futura** — dejar previsto sumar nuevos proyectos a medida que aparezcan clientes externos
+
+### Fase 20: Oferta Más Clara
+
+- [ ] **Home** — evaluar agregar bloque corto "Qué puedo hacer por tu negocio"
+- [ ] **Oferta** — mantenerlo simple, sin parecer agencia genérica
+- [ ] **Oferta** — posibles líneas:
+  - [ ] Landing institucional para generar confianza
+  - [ ] Catálogo online con pedidos por WhatsApp
+  - [ ] Tienda simple o e-commerce a medida cuando tenga sentido
+- [ ] **Oferta** — explicar entregables sin hablar de presupuesto si todavía no se quiere publicar precios
+- [ ] **Post-lanzamiento** — aclarar de forma breve qué pasa después de publicar:
+  - [ ] Autogestión
+  - [ ] Ajustes básicos
+  - [ ] Mantenimiento si aplica
+
+### Fase 21: Verificación Final V1.2
+
+- [ ] Ejecutar lint
+- [ ] Ejecutar build estático
+- [ ] Verificar `/sitemap.xml`
+- [ ] Verificar `/robots.txt`
+- [ ] Verificar preview al compartir por WhatsApp
+- [ ] Verificar favicon en navegador
+- [ ] Verificar links externos:
+  - [ ] WhatsApp
+  - [ ] Email
+  - [ ] LinkedIn
+  - [ ] GitHub
+  - [ ] Sitios en producción
+  - [ ] Repositorios
+- [ ] Revisar mobile manualmente
+- [ ] Revisar que la home no se sienta repetitiva
+- [ ] Deploy final en Cloudflare Pages
+- [ ] Marcar tareas completadas en `docs/todo.md`
+
+---
+
 ## Deploy — Cloudflare Pages (V1.0)
 
 > Seguimiento del deployment, separado de las fases de desarrollo.
