@@ -36,8 +36,7 @@ type ContactIcon = LucideIcon | typeof GitHubIcon | typeof LinkedInIcon;
 
 const afterContactExpectations = [
   "Primera charla sin compromiso",
-  "Analizamos tu operación y te armo una propuesta/presupuesto",
-  "Si una web no tiene sentido para tu caso, te lo digo",
+  "Analizo tu operación y te armo una propuesta/presupuesto"
 ] as const;
 
 const contactOptions: {

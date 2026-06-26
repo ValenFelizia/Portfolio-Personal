@@ -28,7 +28,6 @@ export default async function Home() {
     <main id="main-content" className="flex flex-1 flex-col">
       <Hero />
       <ServiceOffer />
-      <ProcessOffer />
 
       <section
         id="proyectos"
@@ -71,6 +70,7 @@ export default async function Home() {
         </div>
       </section>
 
+      <ProcessOffer />
       <AboutMinimal imageSrc="/profile.webp" />
       <Contact />
     </main>

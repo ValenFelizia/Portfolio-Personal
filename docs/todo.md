@@ -278,6 +278,8 @@
   - [x] Ajustes básicos
   - [x] Mantenimiento si aplica
 - [x] **ProcessOffer** — sacar landing/catálogo/tienda del paso 2 (ahora viven en Oferta)
+- [x] **Home** — mover **Cómo trabajo** debajo de proyectos para descomprimir la primera lectura
+- [x] **Favicon** — reemplazar ícono generado por `app/icon.svg` propio con monograma VF
 
 ### Fase 21: Verificación Final V1.2
 

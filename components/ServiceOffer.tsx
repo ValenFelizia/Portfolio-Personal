@@ -2,9 +2,9 @@ const services = [
   {
     title: "Landing institucional",
     description:
-      "Para que te encuentren y generés confianza antes del primer WhatsApp o llamada.",
+      "Desde una carta de presentación clara hasta landings con agenda, videos o varias secciones.",
     deliverable:
-      "Sitio claro con servicios, contacto verificable y presencia de marca.",
+      "Sitio personalizado según lo que tu negocio necesita mostrar.",
   },
   {
     title: "Catálogo online",
@@ -36,18 +36,20 @@ export function ServiceOffer() {
       className="mx-auto w-full max-w-5xl scroll-mt-24 px-6 py-16 motion-safe:animate-fade-in-up motion-safe:[animation-delay:80ms] sm:py-24"
     >
       <div className="space-y-4 text-center">
-        <p className="text-sm uppercase tracking-widest text-muted"></p>
+        <p className="text-sm uppercase tracking-widest text-muted">Servicios</p>
         <h2
           id="service-offer-heading"
           className="text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
         >
           Qué puedo hacer por tu negocio
         </h2>
-        <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted">
-          No vendo paquetes genéricos: elijo el formato que resuelve tu
-          problema y te entrego algo publicable, sin hablar de presupuesto hasta
-          entender tu caso.
-        </p>
+        <div className="mx-auto max-w-2xl space-y-3 text-base leading-relaxed text-muted">
+          <p>
+            No vendo paquetes genéricos: elijo el formato que resuelve tu
+            problema y te entrego algo publicable, sin hablar de presupuesto
+            hasta entender tu caso.
+          </p>
+        </div>
       </div>
 
       <ul className="mt-12 grid gap-6 md:grid-cols-3 md:gap-5">
@@ -72,25 +74,6 @@ export function ServiceOffer() {
         ))}
       </ul>
 
-      <div className="mt-10 rounded-xl border border-white/10 bg-white/[0.02] px-6 py-5 sm:px-8 sm:py-6">
-        <p className="text-center text-sm font-medium text-foreground sm:text-left">
-          Después de publicar
-        </p>
-        <ul className="mt-4 flex flex-col gap-3 sm:gap-2">
-          {postLaunch.map((item) => (
-            <li
-              key={item}
-              className="flex items-start gap-3 text-sm leading-relaxed text-muted sm:items-center"
-            >
-              <span
-                aria-hidden
-                className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent sm:mt-0"
-              />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
     </section>
   );
 }
