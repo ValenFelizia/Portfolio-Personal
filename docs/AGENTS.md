@@ -6,7 +6,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 # Portfolio Personal — Guía para agentes(desactualizada parcialmente, estas instrucciones son de cuando iniciamos el proyecto en Mayo)
 
-Referencia principal: `docs/specs.md`. Hoja de ruta: `docs/todo.md`. Respetar las fases activas en `docs/todo.md` (actualmente V1.2).
+Estado CSDD canónico: `.csdd/specs.md` (verdad durable), `.csdd/todo.md` (trabajo activo), `.csdd/decisions.md`, `.csdd/handoff.md`. Historial de fases: `.csdd/archive/`. Respetar tareas activas en `.csdd/todo.md` (actualmente cierre V1.2 / verificación).
 
 ## Contexto del desarrollador
 

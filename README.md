@@ -9,7 +9,7 @@ A client-first portfolio for a freelance web developer (myself). The live site s
 ## Goals
 
 - **For my potential clients:** explain what I do, how and who I work with, and how to start a conversation (WhatsApp-first in my case).
-- **For developers:** a clear static Next.js setup, MDX-driven case studies that are easy to add (the site is built on being modular), and spec-driven workflow (`docs/specs.md`, `docs/todo.md`).
+- **For developers:** a clear static Next.js setup, MDX-driven case studies that are easy to add (the site is built on being modular), and a CSDD workflow under `.csdd/`.
 
 The UI and copy are in **Spanish** (`lang="es"`). I don't plan to translate it yet. Documentation in this repo is in **English**.
 
@@ -30,12 +30,17 @@ The UI and copy are in **Spanish** (`lang="es"`). I don't plan to translate it y
 
 ---
 
-## Architecture (SDD)
+## Architecture (CSDD)
 
-This project follows **Spec-Driven Development (SDD)**:
+This project follows **Collaborative Spec-Driven Development (CSDD)**. Canonical project state lives in `.csdd/`:
 
-1. **`docs/specs.md`** — product and technical source of truth.
-2. **`docs/todo.md`** — phased implementation checklist.
+1. **`.csdd/specs.md`** — durable product and technical truth.
+2. **`.csdd/todo.md`** — current operational work and scope claims.
+3. **`.csdd/decisions.md`** — consequential choices and rationale.
+4. **`.csdd/handoff.md`** — resumable partial state when needed.
+5. **`.csdd/archive/`** — cold semantic history of closed phases.
+
+Legacy paths `docs/specs.md` and `docs/todo.md` redirect here.
 
 ### Folder structure
 
@@ -46,6 +51,7 @@ content/          Case study MDX files
 lib/              Server-only data (getProjects, site config, image config)
 public/           Static assets (previews, logos, _headers for Cloudflare)
 scripts/          Maintenance scripts (image optimization)
+.csdd/            CSDD project state (specs, todo, decisions, handoff, archive)
 ```
 
 ### Data flow
@@ -156,7 +162,7 @@ Security and cache headers for static assets are defined in `public/_headers`.
 ## Audience and open source
 
 - **Clients** are the primary audience on the live site.
-- **GitHub** is a secondary channel: proof of clean code, SDD workflow, and how case studies are authored.
+- **GitHub** is a secondary channel: proof of clean code, CSDD workflow, and how case studies are authored.
 
 This repository is public under the [MIT License](LICENSE). The design and copy reflect a personal brand; reuse the code freely. I'm not going to ask you to mention me in your project, but it's appreciated anyway if you decide to do so.
 
@@ -164,6 +170,8 @@ This repository is public under the [MIT License](LICENSE). The design and copy 
 
 ## Related docs
 
-- [`docs/specs.md`](docs/specs.md) — full technical and product specification (Spanish)
-- [`docs/todo.md`](docs/todo.md) — implementation roadmap and phase checklist
+- [`.csdd/specs.md`](.csdd/specs.md) — product and technical specification (Spanish)
+- [`.csdd/todo.md`](.csdd/todo.md) — current operational backlog
+- [`.csdd/decisions.md`](.csdd/decisions.md) — accepted decisions
+- [`.csdd/archive/`](.csdd/archive/) — closed-phase history
 
