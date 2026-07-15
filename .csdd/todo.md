@@ -8,11 +8,7 @@
 
 ## Pending
 
-- [ ] T-002 — Verificación final V1.2
-  - Owner: valen
-  - Scope: lint, build, sitemap/robots, OG/WhatsApp preview, favicon, links externos, mobile, deploy Cloudflare
-  - Updated: 2026-07-13
-  - Note: Checklist heredado de Fase 21. Tras verificar, marcar completo y soltar scope.
+<!-- Vacío -->
 
 ## Blocked
 
@@ -20,6 +16,12 @@
 
 ## Recently Completed
 
+- [x] T-002 — Verificación final V1.2
+  - Owner: valen
+  - Agent: cursor/csdd-v12-verify
+  - Scope: released
+  - Updated: 2026-07-15
+  - Note: Lint+build OK; prod 200 en `/`, casos, sitemap, robots, OG, favicon/icon; links externos OK (LinkedIn 999 solo a bots); home sin repetición estructural; mobile OK; deploy Cloudflare live.
 - [x] T-001 — Migrar workflow a CSDD (`.csdd/`)
   - Owner: valen
   - Agent: cursor/csdd-init

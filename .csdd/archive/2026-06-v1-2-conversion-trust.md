@@ -1,7 +1,7 @@
-# V1.2 — Conversión y confianza (implementación)
+# V1.2 — Conversión y confianza
 
-- Period: ~2026-06-20 → 2026-06-27
-- Outcome: Fases 15–20 implementadas. Verificación final (Fase 21) sigue abierta en `.csdd/todo.md` (T-002).
+- Period: ~2026-06-20 → 2026-07-15
+- Outcome: Fases 15–20 implementadas y verificación final (T-002 / Fase 21) cerrada.
 
 ## Objective
 
@@ -16,11 +16,15 @@ Corregir fricciones que hacían el portfolio repetitivo, un poco verde o demasia
 - Casos: Felisa sin disclaimer de dominio; Rumbos con impacto más concreto; `seoDescription`.
 - `ServiceOffer` en home; Cómo trabajo debajo de proyectos; favicon SVG + redirect Cloudflare.
 
-## Unresolved at archive time
+## Verification (T-002, 2026-07-15)
 
-- Checklist de verificación/deploy V1.2 (lint, build, previews, links, mobile, deploy).
+- `npm run lint` y `npm run build` OK; artefactos en `out/` (sitemap, robots, opengraph-image, icon.svg, rutas de proyectos).
+- Producción Cloudflare: 200 en home, casos, sitemap.xml, robots.txt, opengraph-image, favicon/icon.
+- Links: WhatsApp, email, GitHub, repos, Felisa y 787 Rumbos OK. LinkedIn responde 999 a requests automatizados (anti-bot); URL canónica correcta.
+- Home: estructura no repetitiva (Oferta → proyectos → Cómo trabajo → Contact expectativa corta). Mobile ~390px: nav, hero y CTA legibles.
+- Deploy live en `portfolio-vfelizia.pages.dev`.
 
 ## Related
 
 - DEC-005, DEC-006, DEC-007, DEC-008, DEC-009
-- Todo vivo: T-002
+- T-002 released
