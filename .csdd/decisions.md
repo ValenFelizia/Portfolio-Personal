@@ -109,8 +109,10 @@ Frontmatter/`highlights` orientados a negocio en cards; MDX y detalle conservan 
 
 ## DEC-006 — ProcessOffer como único bloque de proceso
 
-- Status: accepted
+- Status: superseded
 - Date: 2026-06-20
+- Superseded by: DEC-013
+- Superseded on: 2026-07-27
 
 ### Context
 
@@ -203,3 +205,71 @@ Separa requisitos, decisiones, coordinación y handoff; permite hidratación pro
 ### Consequences
 
 README y `docs/AGENTS.md` apuntan a `.csdd/`. Historial de fases V1.0–V1.2 se distila en `archive/`, no en el todo vivo.
+
+## DEC-011 — Sistema visual Hallmark: índigo afinado + Instrument Serif / Geist
+
+- Status: accepted
+- Date: 2026-07-27
+
+### Context
+
+Auditoría Hallmark marcó gradient headline, grillas 3-col, eyebrows, pills y el índigo Tailwind `#6366f1` como tells. Valen quiere abrir tokens/tipografía pero conservar el ADN índigo + Geist.
+
+### Decision
+
+Custom theme «indigo precisado»: papel/tintas OKLCH hue ~275°, acento `oklch(65% 0.14 275)` (misma familia que el índigo anterior, menos “AI purple”). Tipografía: Instrument Serif (display) + Geist Sans (body). Macrostructure home: Split Studio. Nav N9 (wordmark + CTA); secciones en footer. Sistema locked en `design.md` / `tokens.css`.
+
+### Alternatives Considered
+
+- Catalog theme sin índigo — rechazado: pierde identidad pedida.
+- Geist-only (sin display) — rechazado: falla pairing Hallmark / mono-stack tell.
+- Claridad light paper — rechazado: mantiene dark como dirección de marca.
+
+### Consequences
+
+Specs de tokens actualizados. CTAs dejan de ser pills. Sin gradient text. Cases MDX heredan la voz tipográfica/CTA.
+
+## DEC-012 — Prueba visual antes que oferta (home proof-first)
+
+- Status: accepted
+- Date: 2026-07-27
+
+### Context
+
+Tras el redesign Hallmark, la home seguía sintiéndose texto-pesada: Oferta antes de capturas, y con solo 2 proyectos la evidencia llegaba tarde. Meter laburos en el Hero se descartó (pesado / frágil al sumar un 3.º caso).
+
+### Decision
+
+Orden home: Hero → Trabajos destacados → Oferta → Sobre mí → Contacto. Featured pin explícito: slug `rumbos` (787 Rumbos); resto `compact` (p. ej. Felisa). ServiceOffer en líneas cortas, sin bloque “Entregable” duplicado. (Proceso en home removido — DEC-013.)
+
+### Alternatives Considered
+
+- Collage / previews en Hero — rechazado: con 2 piezas queda forzado; pelea con Split Studio.
+- Mantener Oferta antes de Trabajos (REQ-001 V1.2) — supersedido: prioriza explicación sobre prueba.
+
+### Consequences
+
+REQ-001 actualizado. Al publicar un 3.º proyecto, el grid compacto bajo el featured escala sin tocar el Hero.
+
+## DEC-013 — Sin ProcessOffer en home (mostrar > contar)
+
+- Status: accepted
+- Date: 2026-07-27
+- Supersedes: DEC-006
+
+### Context
+
+Con home proof-first, el bloque “De la primera charla al sitio en vivo” repetía el arco Hero/Oferta/Contacto sin aportar prueba visual. El tono minimalista pide mínima información necesaria.
+
+### Decision
+
+Quitar `ProcessOffer` de la home. La expectativa post-contacto sigue en Contact (corta). El “cómo” vive en casos MDX cuando el lector ya entró. El archivo `components/ProcessOffer.tsx` puede permanecer sin montar hasta limpieza explícita.
+
+### Alternatives Considered
+
+- Acortar ProcessOffer a una línea — rechazado: sigue siendo contar sin mostrar.
+- Mover proceso al Hero — rechazado: carga el fold.
+
+### Consequences
+
+REQ-001 y `design.md` sin sección Proceso. DEC-006 supersedido.

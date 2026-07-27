@@ -4,9 +4,9 @@
 
 ## In Progress
 
-<!-- Vacío -->
+<!-- Vacío — T-004 FORVEX se claima tras land de T-003 -->
 
-## Pending
+## Ready to Land
 
 <!-- Vacío -->
 
@@ -14,8 +14,24 @@
 
 <!-- Vacío -->
 
+## Pending
+
+<!-- Vacío -->
+
+## Deferred
+
+<!-- Vacío -->
+
 ## Recently Completed
 
+Retention: 5
+
+- [x] T-003 — Pulido visual home (Hallmark + proof-first)
+  - Owner: valen
+  - Agent: cursor/hallmark-t003
+  - Scope: released
+  - Updated: 2026-07-27
+  - Note: Design system OKLCH + Instrument/Geist; home proof-first (Rumbos featured); Oferta corta; ProcessOffer fuera de home (DEC-013).
 - [x] T-002 — Verificación final V1.2
   - Owner: valen
   - Agent: cursor/csdd-v12-verify

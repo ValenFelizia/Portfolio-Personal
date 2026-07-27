@@ -27,11 +27,12 @@ La home debe responder rápido: qué hago, para quién, qué problemas resuelvo 
 Orden esperado de secciones:
 
 1. **Hero** — `h1` con el lema, subtítulo concreto (negocios locales, WhatsApp, catálogo/tienda, confianza digital) y CTA a contacto.
-2. **Oferta** (`ServiceOffer`) — qué puedo hacer por el negocio (landing, catálogo WhatsApp, tienda cuando tenga sentido).
-3. **Trabajos destacados** — cards con foco en caso de estudio e impacto de negocio.
-4. **Cómo trabajo** (`ProcessOffer`) — único bloque de proceso.
-5. **Sobre mí** — background en ingeniería traducido a beneficios del cliente.
-6. **Contacto** — WhatsApp como acción principal; expectativa breve post-mensaje (no otro proceso completo).
+2. **Trabajos destacados** — prueba visual primero: card featured (captura dominante) + resto compacto; CTA a caso de estudio. Featured pin: `rumbos`.
+3. **Oferta** (`ServiceOffer`) — qué puedo hacer por el negocio, en formato corto (landing, catálogo WhatsApp, tienda cuando tenga sentido).
+4. **Sobre mí** — background en ingeniería traducido a beneficios del cliente.
+5. **Contacto** — WhatsApp como acción principal; expectativa breve post-mensaje (no otro proceso completo).
+
+Prueba antes que explicación: las capturas de trabajo preceden a la oferta de servicios (ver DEC-012). Sin bloque de proceso en home (ver DEC-013).
 
 ### REQ-002 — Hero (copy V1.2)
 
@@ -93,7 +94,8 @@ SEO avanzado no es prioridad (recomendación / boca a boca). Sí son obligatorio
 - `lib/getProjects.ts` es la única fuente para listar/parsear proyectos (server-side / `fs` en build).
 - Clientes primero en el mensaje del sitio; GitHub no desplaza la conversión.
 - No inventar métricas ni testimonios.
-- Tema oscuro con tokens `background`, `foreground`, `muted`, `accent`, `accent-hover`.
+- Tema oscuro con tokens OKLCH en `tokens.css` (aliases Tailwind `background` / `foreground` / `muted` / `accent` / `accent-hover`); sistema portable en `design.md`.
+- Pairing tipográfico Instrument Serif + Geist; headings en roman (sin itálica de display).
 - Color de marca del proyecto: acentos tipográficos/bordes/hovers — no fondos que rompan contraste.
 - Animaciones condicionadas con `motion-safe` / respeto a `prefers-reduced-motion`.
 - Estado durable y coordinación de agentes viven en `.csdd/` (no en `docs/specs.md` / `docs/todo.md` legacy).
@@ -127,29 +129,32 @@ SEO avanzado no es prioridad (recomendación / boca a boca). Sí son obligatorio
 
 Opcionales: `repoUrl`, `brandColor`, `logoPath`, `logoScale`, `summary`, `impact`, `seoDescription`, `highlights`
 
-### Tokens de color (referencia)
+### Tokens de color y tipografía (referencia)
+
+Fuente canónica: `tokens.css` + `design.md`. Aliases Tailwind: `background` / `foreground` / `muted` / `accent` / `accent-hover`.
 
 | Token | Valor | Uso |
 |-------|-------|-----|
-| `background` | `#111111` | Fondo principal |
-| `foreground` | `#e5e5e5` | Texto principal |
-| `muted` | `#a3a3a3` | Texto secundario |
-| `accent` | `#6366f1` | Enlaces, CTAs |
-| `accent-hover` | `#818cf8` | Hover de acentos |
+| `paper` / `background` | `oklch(15.5% 0.018 275)` | Fondo principal (dark tint índigo) |
+| `ink` / `foreground` | `oklch(93% 0.01 275)` | Texto principal |
+| `muted` | `oklch(68% 0.02 275)` | Texto secundario |
+| `accent` | `oklch(65% 0.14 275)` | Enlaces, CTAs (índigo afinado) |
+| `accent-hover` | `oklch(72% 0.12 275)` | Hover de acentos |
 
-Tipografía: Geist Sans. Layout con espacio negativo generoso.
+Tipografía: **Instrument Serif** (display / headings) + **Geist Sans** (body / UI) + Geist Mono (outlier opcional). Layout asimétrico Split Studio en home; sin gradient text; CTAs rectangulares (`--radius-sm`), no pills.
 
 ### Componentes clave
 
 | Componente | Rol |
 |------------|-----|
 | Hero | Propuesta de valor + CTA |
-| ServiceOffer | Oferta de servicios |
-| ProjectCard | Card comercial → caso de estudio |
-| ProcessOffer | Único bloque de proceso |
+| ServiceOffer | Oferta de servicios (corta) |
+| ProjectCard | Card comercial → caso de estudio (`featured` / `compact`) |
 | AboutMinimal | Foto + beneficios al cliente |
-| Contact | Conversión WhatsApp-first |
+| Contact | Conversión WhatsApp-first + expectativa post-mensaje |
 | MDXComponents | Estilos del HTML Markdown |
+
+`ProcessOffer` no forma parte de la home (DEC-013); el archivo puede existir sin montarse.
 
 ### Deploy y repo
 
