@@ -4,7 +4,14 @@
 
 ## In Progress
 
-<!-- Vacío — T-004 FORVEX se claima tras land de T-003 -->
+- [ ] T-004 — Caso FORVEX (MDX + assets + home)
+  - Owner: valen
+  - Agent: cursor/forvex-case
+  - Scope: `content/forvex.mdx`, `public/` (preview/logo), `app/page.tsx` (orden featured/compact si aplica), frontmatter/SEO del caso
+  - Updated: 2026-07-27
+  - Target: development
+  - Note: Emprendimiento Valen + Mauro (ex jefe Ing. Procesos Renault). Ofrece ingeniería de procesos, automatizaciones y software a PyMEs cordobesas. Landing en etapas finales: https://forvex-landing-page.vercel.app/ — dominio propio pendiente (como Felisa: sin disclaimer especial). Preview/captura + caso MDX completo (problema → solución → impacto) + card en home. No inventar métricas.
+  - Depends: assets de captura/logo si hace falta generarlos desde el deploy Vercel
 
 ## Ready to Land
 
