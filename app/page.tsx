@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { AboutMinimal } from "@/components/AboutMinimal";
 import { Contact } from "@/components/Contact";
 import { Hero } from "@/components/Hero";
-import { ProcessOffer } from "@/components/ProcessOffer";
 import { ServiceOffer } from "@/components/ServiceOffer";
 import { ProjectCard } from "@/components/ProjectCard";
 import { getProjects } from "@/lib/getProjects";
@@ -21,56 +20,75 @@ export const metadata: Metadata = {
   },
 };
 
+const FEATURED_SLUG = "rumbos";
+
 export default async function Home() {
   const projects = await getProjects();
+  const featured =
+    projects.find((project) => project.slug === FEATURED_SLUG) ?? projects[0];
+  const rest = projects.filter((project) => project.slug !== featured?.slug);
 
   return (
     <main id="main-content" className="flex flex-1 flex-col">
       <Hero />
-      <ServiceOffer />
 
       <section
         id="proyectos"
         aria-labelledby="proyectos-heading"
-        className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 pb-24 pt-8 sm:pb-32 sm:pt-12"
+        className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 pb-16 pt-4 sm:pb-24 sm:pt-8"
       >
-        <p className="text-sm uppercase tracking-widest text-muted">
-          Trabajos destacados
-        </p>
-        <h2 id="proyectos-heading" className="sr-only">
-          Trabajos destacados
-        </h2>
-        <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted">
-          Proyectos reales que desarrollé y publiqué. Cada uno
-          resolvió un problema concreto de negocio.
-        </p>
+        <div className="grid gap-4 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:items-end md:gap-12">
+          <div className="min-w-0">
+            <h2 id="proyectos-heading" className="section-title">
+              Trabajos destacados
+            </h2>
+          </div>
+          <p className="min-w-0 max-w-xl text-base leading-relaxed text-muted md:justify-self-end">
+            Proyectos reales publicados. Podés ver el detalle leyendo el caso de estudio.
+          </p>
+        </div>
 
-        <div className="mt-8 grid gap-8 md:grid-cols-2">
-          {projects.map((project, index) => (
-            <div
-              key={project.slug}
-              className="motion-safe:animate-fade-in-up"
-              style={{ animationDelay: `${index * 120}ms` }}
-            >
-              <ProjectCard
-                slug={project.slug}
-                title={project.frontmatter.title}
-                client={project.frontmatter.client}
-                highlights={project.frontmatter.highlights}
-                liveUrl={project.frontmatter.liveUrl}
-                imageSrc={`/${project.slug}-preview.webp`}
-                brandColor={project.frontmatter.brandColor}
-                logoPath={project.frontmatter.logoPath}
-                logoScale={project.frontmatter.logoScale}
-                impact={project.frontmatter.impact}
-                priorityImage={index === 0}
-              />
+        <div className="mt-10 flex flex-col gap-6">
+          {featured && (
+            <ProjectCard
+              variant="featured"
+              slug={featured.slug}
+              title={featured.frontmatter.title}
+              client={featured.frontmatter.client}
+              liveUrl={featured.frontmatter.liveUrl}
+              imageSrc={`/${featured.slug}-preview.webp`}
+              brandColor={featured.frontmatter.brandColor}
+              logoPath={featured.frontmatter.logoPath}
+              logoScale={featured.frontmatter.logoScale}
+              impact={featured.frontmatter.impact}
+              priorityImage
+            />
+          )}
+
+          {rest.length > 0 && (
+            <div className="grid gap-6 md:grid-cols-2">
+              {rest.map((project) => (
+                <div key={project.slug} className="min-w-0">
+                  <ProjectCard
+                    variant="compact"
+                    slug={project.slug}
+                    title={project.frontmatter.title}
+                    client={project.frontmatter.client}
+                    highlights={project.frontmatter.highlights}
+                    liveUrl={project.frontmatter.liveUrl}
+                    imageSrc={`/${project.slug}-preview.webp`}
+                    brandColor={project.frontmatter.brandColor}
+                    logoPath={project.frontmatter.logoPath}
+                    logoScale={project.frontmatter.logoScale}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
       </section>
 
-      <ProcessOffer />
+      <ServiceOffer />
       <AboutMinimal imageSrc="/profile.webp" />
       <Contact />
     </main>

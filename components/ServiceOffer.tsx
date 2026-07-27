@@ -1,31 +1,16 @@
 const services = [
   {
     title: "Landing institucional",
-    description:
-      "Desde una carta de presentación clara hasta landings con agenda, videos o varias secciones.",
-    deliverable:
-      "Sitio personalizado según lo que tu negocio necesita mostrar.",
+    line: "Carta de presentación o landing con agenda, video o varias secciones — a medida de lo que el negocio necesita mostrar.",
   },
   {
     title: "Catálogo online",
-    description:
-      "Productos visibles en la web y pedidos listos para enviar por WhatsApp.",
-    deliverable:
-      "Catálogo autogestionable, sin comisiones por venta ni plantillas rígidas.",
+    line: "Productos en la web y pedidos listos para WhatsApp, autogestionable y sin comisiones por venta.",
   },
   {
     title: "Tienda a medida",
-    description:
-      "Cuando el negocio necesita más que una landing o un catálogo simple.",
-    deliverable:
-      "E-commerce adaptado a tu operación, solo si realmente tiene sentido.",
+    line: "E-commerce adaptado a tu operación, solo cuando landing o catálogo ya no alcanzan.",
   },
-] as const;
-
-const postLaunch = [
-  "Te dejo herramientas para autogestionar contenido y catálogo",
-  "Ajustes básicos después del lanzamiento",
-  "Mantenimiento si tu negocio lo necesita",
 ] as const;
 
 export function ServiceOffer() {
@@ -33,47 +18,35 @@ export function ServiceOffer() {
     <section
       id="oferta"
       aria-labelledby="service-offer-heading"
-      className="mx-auto w-full max-w-5xl scroll-mt-24 px-6 py-16 motion-safe:animate-fade-in-up motion-safe:[animation-delay:80ms] sm:py-24"
+      className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 py-14 sm:py-20"
     >
-      <div className="space-y-4 text-center">
-        <p className="text-sm uppercase tracking-widest text-muted">Servicios</p>
-        <h2
-          id="service-offer-heading"
-          className="text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
-        >
-          Qué puedo hacer por tu negocio
-        </h2>
-        <div className="mx-auto max-w-2xl space-y-3 text-base leading-relaxed text-muted">
-          <p>
-            No vendo paquetes genéricos: elijo el formato que resuelve tu
-            problema y te entrego algo publicable, sin hablar de presupuesto
-            hasta entender tu caso.
+      <div className="grid gap-8 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-14">
+        <div className="min-w-0 md:sticky md:top-24 md:self-start">
+          <h2 id="service-offer-heading" className="section-title">
+            Qué puedo hacer por tu negocio
+          </h2>
+          <p className="section-lede">
+            Elijo el formato que resuelve tu caso y entrego algo publicable,
+            sin hablar de presupuesto hasta entender la operación.
           </p>
         </div>
+
+        <ul className="min-w-0 divide-y divide-[color:var(--color-rule)] border-y border-[color:var(--color-rule)]">
+          {services.map((service) => (
+            <li
+              key={service.title}
+              className="grid gap-2 py-5 first:pt-4 last:pb-4 sm:grid-cols-[minmax(0,11rem)_minmax(0,1fr)] sm:gap-8 sm:py-6"
+            >
+              <h3 className="font-display text-lg tracking-[-0.01em] text-foreground sm:text-xl">
+                {service.title}
+              </h3>
+              <p className="min-w-0 text-sm leading-relaxed text-muted">
+                {service.line}
+              </p>
+            </li>
+          ))}
+        </ul>
       </div>
-
-      <ul className="mt-12 grid gap-6 md:grid-cols-3 md:gap-5">
-        {services.map((service) => (
-          <li
-            key={service.title}
-            className="flex flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-6 transition-colors duration-300 hover:border-accent/25 hover:bg-white/[0.04]"
-          >
-            <h3 className="text-lg font-medium tracking-tight text-foreground">
-              {service.title}
-            </h3>
-            <p className="text-sm leading-relaxed text-muted">
-              {service.description}
-            </p>
-            <p className="mt-auto border-t border-white/10 pt-3 text-sm leading-relaxed text-foreground/80">
-              <span className="text-xs font-medium uppercase tracking-widest text-accent">
-                Entregable
-              </span>
-              <span className="mt-1.5 block">{service.deliverable}</span>
-            </p>
-          </li>
-        ))}
-      </ul>
-
     </section>
   );
 }
