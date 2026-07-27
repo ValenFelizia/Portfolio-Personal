@@ -1,0 +1,9 @@
+{
+  "scanned": "2026-07-27",
+  "font_stack": "Instrument Serif (display) + Geist Sans (body) + Geist Mono",
+  "palette": "OKLCH indigo-tinted dark (tokens.css)",
+  "motion": "CSS only — fade-in-up hero; no framer-motion",
+  "spacing": "4pt named scale in tokens.css",
+  "framework": "Next.js 16 App Router + Tailwind v4",
+  "design_md": true
+}
