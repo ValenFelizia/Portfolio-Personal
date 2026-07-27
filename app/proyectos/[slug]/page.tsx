@@ -91,7 +91,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   const { frontmatter, content } = project;
-  const brandColor = frontmatter.brandColor ?? "#6366f1";
+  const brandColor = frontmatter.brandColor ?? "var(--color-accent)";
   const logoScale = frontmatter.logoScale ?? 1;
   const techItems = normalizeCommaList(frontmatter.techStack);
 
@@ -103,7 +103,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <main id="main-content" className="mx-auto w-full max-w-3xl flex-1 px-6 py-16 sm:py-24">
       <Link
         href="/"
-        className="group inline-flex items-center gap-2 rounded-md px-1 py-1 -ml-1 text-sm text-muted transition-colors duration-300 hover:text-foreground"
+        className="group inline-flex items-center gap-2 rounded-[var(--radius-sm)] px-1 py-1 -ml-1 text-sm text-muted transition-colors duration-300 hover:text-foreground"
       >
         <ArrowLeft
           className="h-4 w-4 transition-transform duration-300 motion-safe:group-hover:-translate-x-0.5"
@@ -113,14 +113,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </Link>
 
       <article style={brandStyle} className="mt-12">
-        <header className="space-y-6 border-b border-[color:color-mix(in_srgb,var(--brand-color)_20%,transparent)] pb-10">
-          <p className="text-sm uppercase tracking-widest text-muted">
-            {frontmatter.client}
-          </p>
+        <header className="space-y-6 border-b border-[color:color-mix(in_oklch,var(--brand-color)_25%,var(--color-rule))] pb-10">
+          <p className="text-sm text-muted">{frontmatter.client}</p>
 
           <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-            <div className="space-y-4">
-              <h1 className="text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
+            <div className="min-w-0 space-y-4">
+              <h1 className="font-display text-[length:var(--text-display-s)] font-normal tracking-[-0.02em] text-foreground sm:text-[length:var(--text-display)]">
                 {frontmatter.title}
               </h1>
               <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">
@@ -133,7 +131,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   href={frontmatter.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-[color:color-mix(in_srgb,var(--brand-color)_40%,transparent)] bg-[color:color-mix(in_srgb,var(--brand-color)_10%,transparent)] px-4 py-2 text-sm font-medium text-foreground transition-all duration-300 hover:border-[color:color-mix(in_srgb,var(--brand-color)_60%,transparent)] hover:bg-[color:color-mix(in_srgb,var(--brand-color)_18%,transparent)]"
+                  className="btn-primary"
                 >
                   Ver sitio en producción
                   <ExternalLink className="h-3.5 w-3.5" aria-hidden />
@@ -143,9 +141,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
             {frontmatter.logoPath && (
               <div
-                className={`shrink-0 self-start rounded-lg border border-white/15 bg-white/95 shadow-sm ${
+                className={`shrink-0 self-start border border-[color:var(--color-rule)] bg-[color:var(--color-logo-plate)] shadow-sm ${
                   logoScale > 1 ? "p-1" : "p-2"
                 }`}
+                style={{ borderRadius: "var(--radius-sm)" }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -168,11 +167,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
         <section
           aria-labelledby="technical-details-heading"
-          className="border-t border-[color:color-mix(in_srgb,var(--brand-color)_20%,transparent)] pt-10"
+          className="border-t border-[color:color-mix(in_oklch,var(--brand-color)_25%,var(--color-rule))] pt-10"
         >
           <h2
             id="technical-details-heading"
-            className="text-sm uppercase tracking-widest text-muted"
+            className="text-sm font-medium text-muted"
           >
             Detalles técnicos
           </h2>
@@ -182,7 +181,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               {techItems.map((tech) => (
                 <li
                   key={tech}
-                  className="rounded-full border border-white/10 px-2.5 py-1 text-xs text-muted"
+                  className="border border-[color:var(--color-rule)] px-2.5 py-1 text-xs text-muted"
+                  style={{ borderRadius: "var(--radius-sm)" }}
                 >
                   {tech}
                 </li>
@@ -196,7 +196,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 href={frontmatter.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                className="btn-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
                 Ver repositorio
                 <ExternalLink className="h-3.5 w-3.5" aria-hidden />
@@ -205,17 +205,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           )}
         </section>
 
-        <footer className="mt-12 border-t border-[color:color-mix(in_srgb,var(--brand-color)_20%,transparent)] pt-10">
-          <h2 className="text-2xl font-medium tracking-tight text-foreground">
+        <footer className="mt-12 border-t border-[color:color-mix(in_oklch,var(--brand-color)_25%,var(--color-rule))] pt-10">
+          <h2 className="section-title text-[length:var(--text-2xl)]">
             ¿Tenés un problema parecido?
           </h2>
           <p className="mt-3 max-w-xl text-base leading-relaxed text-muted">
             Si tu negocio enfrenta algo similar, charlemos, sin compromiso.
           </p>
-          <Link
-            href="/#contacto"
-            className="mt-6 inline-flex items-center justify-center rounded-full border border-accent/40 bg-accent/10 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-accent hover:bg-accent/20 hover:text-white motion-safe:hover:-translate-y-0.5"
-          >
+          <Link href="/#contacto" className="btn-primary mt-6">
             Escribime
           </Link>
         </footer>
