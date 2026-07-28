@@ -21,12 +21,25 @@ export const metadata: Metadata = {
 };
 
 const FEATURED_SLUG = "rumbos";
+const COMPACT_ORDER = ["felisa", "forvex"] as const;
 
 export default async function Home() {
   const projects = await getProjects();
   const featured =
     projects.find((project) => project.slug === FEATURED_SLUG) ?? projects[0];
-  const rest = projects.filter((project) => project.slug !== featured?.slug);
+  const rest = projects
+    .filter((project) => project.slug !== featured?.slug)
+    .sort((a, b) => {
+      const ai = COMPACT_ORDER.indexOf(
+        a.slug as (typeof COMPACT_ORDER)[number],
+      );
+      const bi = COMPACT_ORDER.indexOf(
+        b.slug as (typeof COMPACT_ORDER)[number],
+      );
+      const aRank = ai === -1 ? COMPACT_ORDER.length : ai;
+      const bRank = bi === -1 ? COMPACT_ORDER.length : bi;
+      return aRank - bRank;
+    });
 
   return (
     <main id="main-content" className="flex flex-1 flex-col">
