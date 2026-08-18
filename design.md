@@ -10,7 +10,8 @@ editorial
 
 ## Macrostructure family
 
-- Marketing pages (home): Split Studio — diptychs text/proof, left-biased heads, no centred marketing stacks
+- Marketing pages (home): Split Studio, diptychs text/proof, left-biased heads, no centred marketing stacks
+- Home Hero: lema + CTA on the left; selected-work names on the right (links to cases). Gutter only, no rule, no arrow, no screenshots (DEC-012)
 - Home section order (proof-first): Hero → Trabajos (featured + compact) → Oferta corta → Sobre mí → Contacto
 - No ProcessOffer on marketing home (DEC-013)
 - Content pages (`/proyectos/[slug]`): Long Document within the same type/colour/CTA voice

@@ -41,9 +41,18 @@ export default async function Home() {
       return aRank - bRank;
     });
 
+  const selectedWork = [featured, ...rest]
+    .filter((project): project is NonNullable<typeof project> =>
+      Boolean(project),
+    )
+    .map((project) => ({
+      slug: project.slug,
+      title: project.frontmatter.title,
+    }));
+
   return (
     <main id="main-content" className="flex flex-1 flex-col">
-      <Hero />
+      <Hero selectedWork={selectedWork} />
 
       <section
         id="proyectos"

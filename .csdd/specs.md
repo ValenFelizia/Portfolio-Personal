@@ -26,7 +26,7 @@ La home debe responder rápido: qué hago, para quién, qué problemas resuelvo 
 
 Orden esperado de secciones:
 
-1. **Hero** — `h1` con el lema, subtítulo concreto (negocios locales, WhatsApp, catálogo/tienda, confianza digital) y CTA a contacto.
+1. **Hero:** `h1` con el lema, subtítulo concreto (negocios locales, WhatsApp, catálogo/tienda, confianza digital), CTA a contacto, y columna selected-work (nombres de casos en producción, sin previews).
 2. **Trabajos destacados** — prueba visual primero: card featured (captura dominante) + resto compacto; CTA a caso de estudio. Featured pin: `rumbos`.
 3. **Oferta** (`ServiceOffer`) — qué puedo hacer por el negocio, en formato corto (landing, catálogo WhatsApp, tienda cuando tenga sentido).
 4. **Sobre mí** — background en ingeniería traducido a beneficios del cliente.
@@ -39,6 +39,7 @@ Prueba antes que explicación: las capturas de trabajo preceden a la oferta de s
 - **H1:** "Desarrollo web enfocado en procesos y negocio."
 - **Subtítulo:** negocios locales, ventas por WhatsApp, catálogos/tiendas online, presencia digital confiable. Evitar tono corporativo y frases genéricas en el h1.
 - **CTA principal:** "Hablemos de tu proyecto" → `#contacto`.
+- **Columna derecha:** selected-work. Nombres reales de casos en producción, cada uno con link a `/proyectos/[slug]`. Sin flecha, sin rule (gutter del grid). Sin previews (DEC-012). Un solo rótulo "En producción". En mobile se apila bajo el CTA.
 
 ### REQ-003 — Casos de estudio MDX
 
@@ -147,7 +148,7 @@ Tipografía: **Instrument Serif** (display / headings) + **Geist Sans** (body / 
 
 | Componente | Rol |
 |------------|-----|
-| Hero | Propuesta de valor + CTA |
+| Hero | Propuesta de valor + CTA + selected-work |
 | ServiceOffer | Oferta de servicios (corta) |
 | ProjectCard | Card comercial → caso de estudio (`featured` / `compact`) |
 | AboutMinimal | Foto + beneficios al cliente |
