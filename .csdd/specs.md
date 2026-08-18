@@ -39,7 +39,7 @@ Prueba antes que explicación: las capturas de trabajo preceden a la oferta de s
 - **H1:** "Desarrollo web enfocado en procesos y negocio."
 - **Subtítulo:** negocios locales, ventas por WhatsApp, catálogos/tiendas online, presencia digital confiable. Evitar tono corporativo y frases genéricas en el h1.
 - **CTA principal:** "Hablemos de tu proyecto" → `#contacto`.
-- **Columna derecha:** selected-work. Nombres reales de casos en producción, cada uno con link a `/proyectos/[slug]`. Sin flecha, sin rule (gutter del grid). Sin previews (DEC-012). Un solo rótulo "En producción". En mobile se apila bajo el CTA.
+- **Columna derecha:** selected-work. Nombres reales de casos publicados, cada uno con link a `/proyectos/[slug]`. Sin flecha, sin rule (gutter del grid). Sin previews (DEC-012). Un solo rótulo "Sitios publicados". En mobile se apila bajo el CTA.
 
 ### REQ-003 — Casos de estudio MDX
 

@@ -55,7 +55,7 @@ export function Hero({ selectedWork }: HeroProps) {
               id="hero-selected-heading"
               className="text-sm leading-relaxed text-muted"
             >
-              En producción
+              Sitios publicados
             </p>
             <ul className="mt-4 space-y-3">
               {selectedWork.map((work) => (
