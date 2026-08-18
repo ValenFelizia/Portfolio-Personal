@@ -11,7 +11,7 @@ export function Footer() {
           </p>
           <p>Valentín Felizia · {new Date().getFullYear()}</p>
           <p>
-            P.D. Este sitio también lo hice yo —{" "}
+            P.D. Este sitio también lo hice yo,{" "}
             <a
               href={siteRepoUrl}
               target="_blank"

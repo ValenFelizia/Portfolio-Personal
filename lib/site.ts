@@ -19,7 +19,7 @@ export const siteMetadata = {
   description:
     "Sitios y catálogos web para negocios locales. Ayudo a vender mejor y generar confianza online.",
   locale: "es_AR",
-  ogImageAlt: "Valentín Felizia — Desarrollo web para negocios locales",
+  ogImageAlt: "Valentín Felizia, desarrollo web para negocios locales",
 };
 
 export const siteContact = {

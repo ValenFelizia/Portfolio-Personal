@@ -1,4 +1,4 @@
-# Portfolio Personal — Valentín Felizia
+# Portfolio Personal de Valentín Felizia
 
 A client-first portfolio for a freelance web developer (myself). The live site showcases real projects and case studies; this repository is the open-source implementation. If you want to contribute, feel free to send a PR :)
 
@@ -34,11 +34,11 @@ The UI and copy are in **Spanish** (`lang="es"`). I don't plan to translate it y
 
 This project follows **Collaborative Spec-Driven Development (CSDD)**. Canonical project state lives in `.csdd/`:
 
-1. **`.csdd/specs.md`** — durable product and technical truth.
-2. **`.csdd/todo.md`** — current operational work and scope claims.
-3. **`.csdd/decisions.md`** — consequential choices and rationale.
-4. **`.csdd/handoff.md`** — resumable partial state when needed.
-5. **`.csdd/archive/`** — cold semantic history of closed phases.
+1. **`.csdd/specs.md`**: durable product and technical truth.
+2. **`.csdd/todo.md`**: current operational work and scope claims.
+3. **`.csdd/decisions.md`**: consequential choices and rationale.
+4. **`.csdd/handoff.md`**: resumable partial state when needed.
+5. **`.csdd/archive/`**: cold semantic history of closed phases.
 
 Legacy paths `docs/specs.md` and `docs/todo.md` redirect here.
 
@@ -60,7 +60,7 @@ scripts/          Maintenance scripts (image optimization)
 2. The home page lists projects via `ProjectCard`.
 3. `/proyectos/[slug]` renders the MDX body with `MDXComponents`.
 
-There is no runtime database or CMS for the portfolio itself—only static files. Didn't feel like the right thing to do if the site is going to be run by actual developers.
+There is no runtime database or CMS for the portfolio itself, only static files. Didn't feel like the right thing to do if the site is going to be run by actual developers.
 
 ---
 
@@ -141,7 +141,7 @@ Optional fields: `brandColor`, `logoPath`, `logoScale`, `impact`, `summary`, `se
   - `your-slug-preview.webp` (project screenshot)
   - `logos/your-slug.svg` if needed
 3. **Run** `npm run optimize-images`.
-4. **Verify** with `npm run build` — the route `/proyectos/your-slug` is generated automatically.
+4. **Verify** with `npm run build`. The route `/proyectos/your-slug` is generated automatically.
 
 ---
 
@@ -170,8 +170,8 @@ This repository is public under the [MIT License](LICENSE). The design and copy 
 
 ## Related docs
 
-- [`.csdd/specs.md`](.csdd/specs.md) — product and technical specification (Spanish)
-- [`.csdd/todo.md`](.csdd/todo.md) — current operational backlog
-- [`.csdd/decisions.md`](.csdd/decisions.md) — accepted decisions
-- [`.csdd/archive/`](.csdd/archive/) — closed-phase history
+- [`.csdd/specs.md`](.csdd/specs.md): product and technical specification (Spanish)
+- [`.csdd/todo.md`](.csdd/todo.md): current operational backlog
+- [`.csdd/decisions.md`](.csdd/decisions.md): accepted decisions
+- [`.csdd/archive/`](.csdd/archive/): closed-phase history
 

@@ -1,7 +1,7 @@
 const services = [
   {
     title: "Landing institucional",
-    line: "Carta de presentación o landing con agenda, video o varias secciones — a medida de lo que el negocio necesita mostrar.",
+    line: "Carta de presentación o landing con agenda, video o varias secciones, a medida de lo que el negocio necesita mostrar.",
   },
   {
     title: "Catálogo online",
