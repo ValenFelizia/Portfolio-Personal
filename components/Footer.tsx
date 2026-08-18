@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { siteRepoUrl } from "@/lib/site";
 
 export function Footer() {
@@ -27,28 +26,28 @@ export function Footer() {
         <nav aria-label="Secciones" className="shrink-0">
           <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
             <li>
-              <Link
+              <a
                 href="/#proyectos"
                 className="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
                 Proyectos
-              </Link>
+              </a>
             </li>
             <li>
-              <Link
+              <a
                 href="/#sobre-mi"
                 className="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
                 Sobre mí
-              </Link>
+              </a>
             </li>
             <li>
-              <Link
+              <a
                 href="/#contacto"
                 className="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
                 Contacto
-              </Link>
+              </a>
             </li>
           </ul>
         </nav>

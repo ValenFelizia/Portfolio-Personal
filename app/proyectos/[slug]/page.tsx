@@ -212,9 +212,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <p className="mt-3 max-w-xl text-base leading-relaxed text-muted">
             Si tu negocio enfrenta algo similar, charlemos, sin compromiso.
           </p>
-          <Link href="/#contacto" className="btn-primary mt-6">
+          <a href="/#contacto" className="btn-primary mt-6">
             Escribime
-          </Link>
+          </a>
         </footer>
       </article>
     </main>

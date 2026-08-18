@@ -11,9 +11,9 @@ export function Header() {
           Valentín Felizia
         </Link>
 
-        <Link href="/#contacto" className="btn-primary shrink-0 py-2 text-xs sm:text-sm">
+        <a href="/#contacto" className="btn-primary shrink-0 py-2 text-xs sm:text-sm">
           Hablemos
-        </Link>
+        </a>
       </div>
     </header>
   );
