@@ -11,7 +11,7 @@ A client-first portfolio for a freelance web developer (myself). The live site s
 - **For my potential clients:** explain what I do, how and who I work with, and how to start a conversation (WhatsApp-first in my case).
 - **For developers:** a clear static Next.js setup, MDX-driven case studies that are easy to add (the site is built on being modular), and a CSDD workflow under `.csdd/`.
 
-The UI and copy are in **Spanish** (`lang="es"`). I don't plan to translate it yet. Documentation in this repo is in **English**.
+The UI and marketing copy ship in **Spanish** (`es`, default) and **English** (`en`). Documentation in this repo is in **English**. See [Internationalization](#internationalization) below.
 
 ---
 
@@ -46,9 +46,10 @@ Legacy paths `docs/specs.md` and `docs/todo.md` redirect here.
 
 ```
 app/              Routes (home, /proyectos/[slug], sitemap, robots, OG image)
-components/       UI blocks (Hero, ProjectCard, Contact, etc.)
-content/          Case study MDX files
-lib/              Server-only data (getProjects, site config, image config)
+components/       UI blocks (Hero, ProjectCard, Contact, LanguageSwitcher, etc.)
+content/          Case study MDX (Spanish source of truth)
+content/en/       English MDX mirrors (same slug filenames)
+lib/              Data + i18n (getProjects, site config, lib/i18n/*)
 public/           Static assets (previews, logos, _headers for Cloudflare)
 scripts/          Maintenance scripts (image optimization)
 .csdd/            CSDD project state (specs, todo, decisions, handoff, archive)
@@ -56,11 +57,38 @@ scripts/          Maintenance scripts (image optimization)
 
 ### Data flow
 
-1. `lib/getProjects.ts` reads `.mdx` files from `/content` at build time.
-2. The home page lists projects via `ProjectCard`.
-3. `/proyectos/[slug]` renders the MDX body with `MDXComponents`.
+1. `lib/getProjects.ts` reads Spanish `.mdx` from `/content` and optional English mirrors from `/content/en` at build time.
+2. The home page lists projects via `ProjectCard` (locale-aware frontmatter).
+3. `/proyectos/[slug]` renders both MDX bodies; the active locale chooses which one to show.
 
 There is no runtime database or CMS for the portfolio itself, only static files. Didn't feel like the right thing to do if the site is going to be run by actual developers.
+
+---
+
+## Internationalization
+
+Locales: **`es`** (default / source of truth) and **`en`**. No URL prefix — the site stays a single static export for Cloudflare Pages (`output: "export"`). See **DEC-014** in `.csdd/decisions.md`.
+
+### How locale is chosen
+
+1. If `localStorage["portfolio-locale"]` is `es` or `en`, that wins.
+2. Otherwise on first visit: if `navigator.language` / `navigator.languages` starts with `en`, start in English; otherwise Spanish.
+3. The navbar **ES | EN** control sets the preference, updates UI immediately, and sets `<html lang>`.
+4. An inline bootstrap script runs before paint to set `lang` / `data-locale` and reduce wrong-language flash on static hosting.
+
+### UI strings
+
+Dictionaries live in `lib/i18n/dictionaries/{es,en}.ts`. Components call `useDictionary()` from `LocaleProvider`.
+
+To add or change copy: edit both dictionary files (keep keys in sync), then verify with the language switcher.
+
+### Case studies (MDX)
+
+1. Spanish source: `content/{slug}.mdx` (required).
+2. English mirror: `content/en/{slug}.mdx` (same required frontmatter + full EN body).
+3. `getProjects()` attaches `locales.es` and optional `locales.en`. Missing EN falls back to Spanish for that project.
+
+When adding a project, translate the English mirror in the same PR when possible.
 
 ---
 
@@ -121,7 +149,7 @@ cp .env.example .env.local
 
 ## Adding a new case study
 
-1. **Create** `content/your-slug.mdx` with required frontmatter:
+1. **Create** `content/your-slug.mdx` (Spanish) with required frontmatter:
 
 ```yaml
 ---
@@ -134,14 +162,15 @@ techStack: "Next.js, Tailwind CSS"
 ---
 ```
 
-Optional fields: `brandColor`, `logoPath`, `logoScale`, `impact`, `summary`, `seoDescription`, `highlights`, `repoUrl` (solo si el proyecto es open source y querés mostrar el repo en el caso de estudio).
+Optional fields: `brandColor`, `logoPath`, `logoScale`, `impact`, `summary`, `seoDescription`, `highlights`, `repoUrl` (only if the project is open source and you want the repo link on the case study).
 
-1. **Write** the body with sections such as `## El Problema`, `## La Solución y Arquitectura`, `## El Impacto`.
-2. **Add assets** in `/public`:
+2. **Write** the Spanish body with sections such as `## El Problema`, `## La Solución y Arquitectura`, `## El Impacto`.
+3. **Create** `content/en/your-slug.mdx` with English frontmatter + full English body (`## The Problem`, `## Solution and Architecture`, `## Impact`).
+4. **Add assets** in `/public`:
   - `your-slug-preview.webp` (project screenshot)
   - `logos/your-slug.svg` if needed
-3. **Run** `npm run optimize-images`.
-4. **Verify** with `npm run build`. The route `/proyectos/your-slug` is generated automatically.
+5. **Run** `npm run optimize-images`.
+6. **Verify** with `npm run build`. The route `/proyectos/your-slug` is generated automatically.
 
 ---
 

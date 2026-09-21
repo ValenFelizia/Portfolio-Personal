@@ -1,14 +1,17 @@
+"use client";
+
 import { imageConfig } from "@/lib/imageConfig";
+import { useDictionary } from "@/lib/i18n";
 
 export interface AboutMinimalProps {
   imageSrc?: string;
   imageAlt?: string;
 }
 
-export function AboutMinimal({
-  imageSrc,
-  imageAlt = "Foto profesional",
-}: AboutMinimalProps) {
+export function AboutMinimal({ imageSrc, imageAlt }: AboutMinimalProps) {
+  const { about } = useDictionary();
+  const resolvedAlt = imageAlt ?? about.imageAlt;
+
   return (
     <section
       id="sobre-mi"
@@ -21,7 +24,7 @@ export function AboutMinimal({
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={imageSrc}
-              alt={imageAlt}
+              alt={resolvedAlt}
               width={imageConfig.profile.width}
               height={imageConfig.profile.height}
               loading="lazy"
@@ -38,22 +41,12 @@ export function AboutMinimal({
 
         <div className="min-w-0 space-y-5 text-left">
           <h2 id="sobre-mi-heading" className="section-title">
-            Entiendo tu negocio antes de escribir código
+            {about.heading}
           </h2>
           <div className="max-w-2xl space-y-4 text-base leading-relaxed text-muted">
-            <p>
-              Vengo de un background en ingeniería, donde aprendí a analizar
-              procesos y detectar el problema real antes de proponer una
-              solución. Eso me llevó al desarrollo web con un enfoque distinto:
-              primero entender cómo opera tu negocio, después diseñar y
-              construir algo que tenga sentido en el día a día.
-            </p>
-            <p>
-              Desarrollo sitios rápidos, catálogos y e-commerces pensados para
-              resultados concretos: menos fricción operativa, más confianza del
-              cliente final y decisiones técnicas que no te atan a comisiones ni
-              herramientas que no necesitás.
-            </p>
+            {about.paragraphs.map((paragraph) => (
+              <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+            ))}
           </div>
         </div>
       </div>

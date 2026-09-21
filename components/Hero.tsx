@@ -1,8 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { useDictionary, useLocale } from "@/lib/i18n";
 
 export type HeroSelectedWork = {
   slug: string;
-  title: string;
+  title: {
+    es: string;
+    en?: string;
+  };
 };
 
 type HeroProps = {
@@ -10,6 +16,8 @@ type HeroProps = {
 };
 
 export function Hero({ selectedWork }: HeroProps) {
+  const { hero } = useDictionary();
+  const { locale } = useLocale();
   const hasSelectedWork = selectedWork.length > 0;
 
   return (
@@ -32,17 +40,15 @@ export function Hero({ selectedWork }: HeroProps) {
             className="font-display text-balance text-[length:var(--text-display)] font-normal leading-[1.08] tracking-[-0.02em] text-foreground"
             style={{ overflowWrap: "anywhere" }}
           >
-            Desarrollo web enfocado en procesos y negocio.
+            {hero.headline}
           </h1>
 
           <p className="section-lede mt-6 max-w-xl text-base leading-relaxed sm:text-lg">
-            Trabajo con negocios locales que venden por WhatsApp, necesitan un
-            catálogo o tienda online y buscan una presencia digital clara y
-            confiable.
+            {hero.subtitle}
           </p>
 
           <a href="#contacto" className="btn-primary mt-10">
-            Hablemos de tu proyecto
+            {hero.cta}
           </a>
         </div>
 
@@ -55,19 +61,26 @@ export function Hero({ selectedWork }: HeroProps) {
               id="hero-selected-heading"
               className="text-sm leading-relaxed text-muted"
             >
-              Sitios publicados
+              {hero.selectedWorkHeading}
             </p>
             <ul className="mt-4 space-y-3">
-              {selectedWork.map((work) => (
-                <li key={work.slug} className="min-w-0">
-                  <Link
-                    href={`/proyectos/${work.slug}`}
-                    className="font-display text-xl tracking-[-0.02em] text-foreground transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:text-2xl"
-                  >
-                    {work.title}
-                  </Link>
-                </li>
-              ))}
+              {selectedWork.map((work) => {
+                const title =
+                  locale === "en" && work.title.en
+                    ? work.title.en
+                    : work.title.es;
+
+                return (
+                  <li key={work.slug} className="min-w-0">
+                    <Link
+                      href={`/proyectos/${work.slug}`}
+                      className="font-display text-xl tracking-[-0.02em] text-foreground transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:text-2xl"
+                    >
+                      {title}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </aside>
         ) : null}
