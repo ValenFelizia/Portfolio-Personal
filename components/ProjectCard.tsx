@@ -1,30 +1,50 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import type { CSSProperties } from "react";
 import { imageConfig } from "@/lib/imageConfig";
+import { useDictionary, useLocale } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n/types";
+
+export type LocalizedString = {
+  es: string;
+  en?: string;
+};
 
 export interface ProjectCardProps {
-  title: string;
-  client: string;
-  highlights?: string | string[];
+  title: LocalizedString;
+  client: LocalizedString;
+  highlights?: LocalizedString;
   liveUrl: string;
   slug: string;
   imageSrc?: string;
-  imageAlt?: string;
+  imageAlt?: LocalizedString;
   brandColor?: string;
   logoPath?: string;
   logoScale?: number;
-  impact?: string;
+  impact?: LocalizedString;
   priorityImage?: boolean;
   /** featured = proof-first diptych; compact = image-led with less chrome */
   variant?: "default" | "featured" | "compact";
 }
 
-function normalizeList(items: string | string[]): string[] {
-  if (Array.isArray(items)) {
-    return items.map((item) => item.trim()).filter(Boolean);
+function pickLocalized(
+  value: LocalizedString | undefined,
+  locale: Locale,
+): string | undefined {
+  if (!value) {
+    return undefined;
   }
 
+  if (locale === "en" && value.en) {
+    return value.en;
+  }
+
+  return value.es;
+}
+
+function normalizeList(items: string): string[] {
   return items
     .split(",")
     .map((item) => item.trim())
@@ -49,11 +69,22 @@ export function ProjectCard({
   priorityImage = false,
   variant = "default",
 }: ProjectCardProps) {
-  const tags = highlights ? normalizeList(highlights).slice(0, 2) : [];
+  const { locale } = useLocale();
+  const { projectCard } = useDictionary();
+
+  const resolvedTitle = pickLocalized(title, locale) ?? "";
+  const resolvedClient = pickLocalized(client, locale) ?? "";
+  const resolvedImpact = pickLocalized(impact, locale);
+  const resolvedImageAlt = pickLocalized(imageAlt, locale);
+  const resolvedHighlights = pickLocalized(highlights, locale);
+  const tags = resolvedHighlights
+    ? normalizeList(resolvedHighlights).slice(0, 2)
+    : [];
+
   const resolvedLogoScale = logoScale ?? 1;
   const isFeatured = variant === "featured";
   const isCompact = variant === "compact";
-  const showImpact = Boolean(impact) && !isCompact;
+  const showImpact = Boolean(resolvedImpact) && !isCompact;
   const showTags = tags.length > 0 && !isFeatured;
   const cardStyle = {
     "--brand-color": brandColor ?? "var(--color-accent)",
@@ -71,7 +102,7 @@ export function ProjectCard({
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={imageSrc}
-          alt={imageAlt ?? `Captura de ${title}`}
+          alt={resolvedImageAlt ?? projectCard.captureAlt(resolvedTitle)}
           width={imageConfig.projectPreview.width}
           height={imageConfig.projectPreview.height}
           sizes={
@@ -89,7 +120,7 @@ export function ProjectCard({
           aria-hidden
           className="flex h-full w-full items-center justify-center text-sm text-muted"
         >
-          Captura próximamente
+          {projectCard.captureSoon}
         </div>
       )}
     </div>
@@ -100,23 +131,26 @@ export function ProjectCard({
       className={`flex flex-1 flex-col gap-4 ${isFeatured ? "p-6 sm:p-8 md:justify-center" : "p-5 sm:p-6"}`}
     >
       <div className="space-y-2">
-        <p className="text-sm text-muted">{client}</p>
+        <p className="text-sm text-muted">{resolvedClient}</p>
         <h3
           className={`font-display tracking-[-0.015em] text-foreground ${
             isFeatured ? "text-3xl sm:text-4xl" : "text-2xl"
           }`}
         >
-          {title}
+          {resolvedTitle}
         </h3>
         {showImpact && (
           <p className="border-t border-[color:var(--color-rule)] pt-3 text-sm leading-relaxed text-muted">
-            {impact}
+            {resolvedImpact}
           </p>
         )}
       </div>
 
       {showTags && (
-        <ul className="flex flex-wrap gap-2" aria-label="Beneficios del proyecto">
+        <ul
+          className="flex flex-wrap gap-2"
+          aria-label={projectCard.benefitsLabel}
+        >
           {tags.map((tag) => (
             <li
               key={tag}
@@ -135,7 +169,7 @@ export function ProjectCard({
             href={`/proyectos/${slug}`}
             className={`btn-primary w-fit py-2 ${linkFocus}`}
           >
-            Leer caso de estudio
+            {projectCard.readCaseStudy}
             <ArrowRight className="h-3.5 w-3.5" aria-hidden />
           </Link>
           <a
@@ -144,7 +178,7 @@ export function ProjectCard({
             rel="noopener noreferrer"
             className={`btn-secondary w-fit px-1 py-1 ${linkFocus}`}
           >
-            Visitar sitio publicado
+            {projectCard.visitLiveSite}
             <ExternalLink className="h-3.5 w-3.5" aria-hidden />
           </a>
         </div>
@@ -159,7 +193,7 @@ export function ProjectCard({
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={logoPath}
-              alt={`Logo de ${client}`}
+              alt={projectCard.logoAlt(resolvedClient)}
               className="w-auto object-contain object-left"
               style={{
                 height: `${1.75 * resolvedLogoScale}rem`,

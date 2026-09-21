@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { SkipLink } from "@/components/SkipLink";
+import { LocaleProvider, LocaleScript } from "@/lib/i18n";
+import { DEFAULT_LOCALE } from "@/lib/i18n/types";
 import { siteMetadata, siteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -57,14 +59,20 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="es"
+      lang={DEFAULT_LOCALE}
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
+      <head>
+        <LocaleScript />
+      </head>
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
-        <SkipLink />
-        <Header />
-        {children}
-        <Footer />
+        <LocaleProvider>
+          <SkipLink />
+          <Header />
+          {children}
+          <Footer />
+        </LocaleProvider>
       </body>
     </html>
   );

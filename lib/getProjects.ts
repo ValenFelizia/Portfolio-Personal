@@ -1,6 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
+import { type Locale } from "@/lib/i18n/types";
 
 export interface ProjectFrontmatter {
   title: string;
@@ -21,13 +22,24 @@ export interface ProjectFrontmatter {
   highlights?: string;
 }
 
-export interface Project {
-  slug: string;
+export interface ProjectLocaleContent {
   frontmatter: ProjectFrontmatter;
   content: string;
 }
 
+export interface Project {
+  slug: string;
+  /** Spanish source of truth (also used for static metadata defaults). */
+  frontmatter: ProjectFrontmatter;
+  content: string;
+  /** Per-locale bodies; `es` always present, `en` when `content/en/{slug}.mdx` exists. */
+  locales: Partial<Record<Locale, ProjectLocaleContent>> & {
+    es: ProjectLocaleContent;
+  };
+}
+
 const CONTENT_DIR = path.join(process.cwd(), "content");
+const CONTENT_EN_DIR = path.join(CONTENT_DIR, "en");
 
 const REQUIRED_FRONTMATTER_KEYS: (keyof ProjectFrontmatter)[] = [
   "title",
@@ -64,7 +76,10 @@ function parseOptionalString(value: unknown): string | undefined {
   return String(value);
 }
 
-function parseFrontmatter(data: Record<string, unknown>, filename: string): ProjectFrontmatter {
+function parseFrontmatter(
+  data: Record<string, unknown>,
+  filename: string,
+): ProjectFrontmatter {
   const missing = REQUIRED_FRONTMATTER_KEYS.filter((key) => !data[key]);
 
   if (missing.length > 0) {
@@ -95,20 +110,67 @@ function slugFromFilename(filename: string): string {
   return filename.replace(/\.mdx$/, "");
 }
 
+async function readProjectFile(
+  filePath: string,
+  filename: string,
+): Promise<ProjectLocaleContent> {
+  const raw = await fs.readFile(filePath, "utf8");
+  const { data, content } = matter(raw);
+
+  return {
+    frontmatter: parseFrontmatter(data, filename),
+    content: content.trim(),
+  };
+}
+
+async function readEnglishLocale(
+  slug: string,
+): Promise<ProjectLocaleContent | null> {
+  const filename = `${slug}.mdx`;
+  const filePath = path.join(CONTENT_EN_DIR, filename);
+
+  try {
+    await fs.access(filePath);
+  } catch {
+    return null;
+  }
+
+  return readProjectFile(filePath, `en/${filename}`);
+}
+
+/** Pick locale content with Spanish fallback. */
+export function getProjectLocaleContent(
+  project: Project,
+  locale: Locale,
+): ProjectLocaleContent {
+  if (locale === "en" && project.locales.en) {
+    return project.locales.en;
+  }
+
+  return project.locales.es;
+}
+
 export async function getProjects(): Promise<Project[]> {
   const entries = await fs.readdir(CONTENT_DIR);
   const mdxFiles = entries.filter((file) => file.endsWith(".mdx"));
 
   const projects = await Promise.all(
     mdxFiles.map(async (filename) => {
+      const slug = slugFromFilename(filename);
       const filePath = path.join(CONTENT_DIR, filename);
-      const raw = await fs.readFile(filePath, "utf8");
-      const { data, content } = matter(raw);
+      const es = await readProjectFile(filePath, filename);
+      const en = await readEnglishLocale(slug);
+
+      const locales: Project["locales"] = { es };
+      if (en) {
+        locales.en = en;
+      }
 
       return {
-        slug: slugFromFilename(filename),
-        frontmatter: parseFrontmatter(data, filename),
-        content: content.trim(),
+        slug,
+        frontmatter: es.frontmatter,
+        content: es.content,
+        locales,
       };
     }),
   );

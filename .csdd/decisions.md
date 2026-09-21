@@ -273,3 +273,31 @@ Quitar `ProcessOffer` de la home. La expectativa post-contacto sigue en Contact 
 ### Consequences
 
 REQ-001 y `design.md` sin sección Proceso. DEC-006 supersedido.
+
+## DEC-014 — i18n ES/EN sin prefijo de URL (client dictionaries + MDX mirrors)
+
+- Status: accepted
+- Date: 2026-09-21
+
+### Context
+
+El sitio era solo español (`lang="es"`). Hacía falta inglés para clientes internacionales sin romper el export estático a Cloudflare Pages ni rediseñar el portfolio.
+
+### Decision
+
+- Locales: `es` (fuente de verdad) y `en`.
+- Sin prefijo de ruta (`/en/...`). Preferencia en `localStorage` (`portfolio-locale`); primera visita detecta `navigator.languages` (`en*` → `en`, si no → `es`).
+- UI: diccionarios en `lib/i18n/dictionaries/` + `LocaleProvider` + switcher accesible en el header.
+- Casos MDX: `content/{slug}.mdx` (ES) + `content/en/{slug}.mdx` (EN); `getProjects` expone ambas.
+- Metadata estática / OG por defecto en español. WhatsApp prefill permanece en español (plantilla existente).
+- Script inline antes del paint para `html[lang]` / `data-locale` (reduce FOUC; un flash breve sigue siendo tradeoff aceptable en static hosting).
+
+### Alternatives Considered
+
+- Prefijos `/es` y `/en` — rechazado: complica el export estático y duplica rutas sin beneficio claro para un portfolio de una sola página + casos.
+- i18n SaaS / CMS — fuera de alcance.
+- Solo frontmatter bilingüe sin cuerpo EN — rechazado: preferimos cuerpos MDX completos en inglés cuando el volumen es bajo.
+
+### Consequences
+
+README y specs documentan el flujo. Agregar un caso implica espejo EN cuando sea posible. El switcher debe mantener teclado, `aria-pressed` / labels, y foco visible.

@@ -1,6 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { useDictionary } from "@/lib/i18n";
 
 export default function NotFound() {
+  const { notFound } = useDictionary();
+
   return (
     <main
       id="main-content"
@@ -8,12 +13,10 @@ export default function NotFound() {
     >
       <div className="mx-auto w-full max-w-lg">
         <p className="font-display text-5xl text-accent">404</p>
-        <h1 className="section-title mt-4">Página no encontrada</h1>
-        <p className="section-lede">
-          La ruta que buscás no existe o fue movida.
-        </p>
+        <h1 className="section-title mt-4">{notFound.title}</h1>
+        <p className="section-lede">{notFound.lede}</p>
         <Link href="/" className="btn-primary mt-10">
-          Volver al inicio
+          {notFound.backHome}
         </Link>
       </div>
     </main>

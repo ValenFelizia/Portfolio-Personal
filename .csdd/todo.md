@@ -26,6 +26,12 @@
 
 Retention: 5
 
+- [x] T-008 — i18n ES/EN (diccionarios + switcher + MDX EN)
+  - Owner: valen (review EN copy before merge)
+  - Agent: cursor/i18n-english-locale
+  - Scope: pr-open
+  - Updated: 2026-09-21
+  - Note: DEC-014; sin prefijo URL; WhatsApp prefill sigue en ES; review de traducciones pendiente de Valentín.
 - [x] T-005 — Revisar composición derecha del Hero (flecha + separador)
   - Owner: valen
   - Agent: cursor/hero-selected-work
@@ -50,9 +56,3 @@ Retention: 5
   - Scope: released
   - Updated: 2026-07-28
   - Note: Caso + preview + logo; compact Felisa | FORVEX; liveUrl Vercel; copy revisado por Valen.
-- [x] T-003 — Pulido visual home (Hallmark + proof-first)
-  - Owner: valen
-  - Agent: cursor/hallmark-t003
-  - Scope: released
-  - Updated: 2026-07-27
-  - Note: Design system OKLCH + Instrument/Geist; home proof-first (Rumbos featured); Oferta corta; ProcessOffer fuera de home (DEC-013).

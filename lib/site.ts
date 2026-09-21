@@ -1,3 +1,7 @@
+/**
+ * WhatsApp prefill stays in Spanish (primary audience / existing template).
+ * Do not invent a parallel EN script unless Valentín provides one.
+ */
 export const whatsappPrefillMessage =
   "Hola Valentín, vi tu portfolio y me gustaría charlar sobre un proyecto.";
 
@@ -13,6 +17,7 @@ export function getWhatsAppUrl(
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-vfelizia.pages.dev/";
 
+/** Static metadata defaults (Spanish). UI locale can switch client-side. */
 export const siteMetadata = {
   name: "Valentín Felizia",
   title: "Valentín Felizia | Desarrollo Web",

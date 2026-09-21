@@ -75,17 +75,27 @@ SEO avanzado no es prioridad (recomendación / boca a boca). Sí son obligatorio
 
 ### REQ-007 — Accesibilidad y mobile
 
-- `lang="es"`, foco visible (`:focus-visible`), contraste suficiente, teclado, `prefers-reduced-motion`
+- `<html lang>` refleja el locale activo (`es` | `en`), foco visible (`:focus-visible`), contraste suficiente, teclado, `prefers-reduced-motion`
 - Header, Hero, cards y Contact cómodos en pantallas chicas
 - Skip link y `aria-labelledby` donde corresponda
+- Language switcher usable con teclado y lectores de pantalla (`aria-label`, `aria-pressed`, foco visible)
+
+### REQ-008 — Internacionalización ES/EN
+
+- Locales: español (default / fuente de verdad) e inglés.
+- Sin prefijo de URL; compatible con export estático (DEC-014).
+- Preferencia explícita en `localStorage`; detección de navegador solo en primera visita.
+- UI/marketing via diccionarios cliente; casos via `content/` + `content/en/`.
+- WhatsApp prefill permanece en español salvo plantilla EN explícita del dueño.
 
 ## Constraints
 
 - **Export estático:** `next.config.ts` con `output: "export"` e `images.unoptimized: true`. Hosting: Cloudflare Pages (`npm run build` → `out/`).
 - **Sin CMS/DB en runtime** para el portfolio: solo archivos estáticos.
-- **Contenido MDX local** en `/content`; parseo con `gray-matter`; render con `next-mdx-remote/rsc`.
+- **Contenido MDX local** en `/content` (ES) y `/content/en` (EN); parseo con `gray-matter`; render con `next-mdx-remote/rsc`.
 - **Tailwind CSS v4** con tokens en `app/globals.css` (`@theme`), no `tailwind.config.ts`.
-- **UI y copy en español** (`lang="es"`). Documentación de repo (README) en inglés.
+- **UI bilingüe ES/EN** con default español. Documentación de repo (README) en inglés.
+- **Sin i18n SaaS** ni más locales que ES/EN.
 - **Repo público MIT:** código reutilizable; contenido de marca es personal.
 - Dominio propio del portfolio: diferido; `NEXT_PUBLIC_SITE_URL` vía Cloudflare cuando aplique.
 - Dominio propio de Felisa: pendiente de la clienta; el caso se apoya en uso real sin disclaimer especial.
@@ -116,9 +126,10 @@ SEO avanzado no es prioridad (recomendación / boca a boca). Sí son obligatorio
 
 ```
 /app          → Rutas (Home, /proyectos/[slug], sitemap, robots, OG, icon)
-/components   → UI reutilizable
-/content      → Casos de estudio MDX
-/lib          → Lógica pura (getProjects, site, imageConfig)
+/components   → UI reutilizable (incluye LanguageSwitcher / ProjectArticle)
+/content      → Casos MDX en español (fuente de verdad)
+/content/en   → Espejos MDX en inglés (mismo slug)
+/lib          → Lógica pura (getProjects, site, imageConfig, i18n)
 /public       → Assets + `_headers` (Cloudflare)
 /scripts      → Mantenimiento (optimize-images)
 .csdd/        → Estado CSDD (specs, todo, decisions, handoff, archive)
@@ -129,6 +140,8 @@ SEO avanzado no es prioridad (recomendación / boca a boca). Sí son obligatorio
 `title`, `client`, `techStack`, `date`, `role`, `liveUrl`
 
 Opcionales: `repoUrl`, `brandColor`, `logoPath`, `logoScale`, `summary`, `impact`, `seoDescription`, `highlights`
+
+Inglés: archivo espejo en `content/en/{slug}.mdx` con el mismo contrato de frontmatter y cuerpo completo traducido.
 
 ### Tokens de color y tipografía (referencia)
 

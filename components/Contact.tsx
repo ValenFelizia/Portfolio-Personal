@@ -1,6 +1,9 @@
+"use client";
+
 import { Mail, MessageCircle } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { ComponentPropsWithoutRef } from "react";
+import { useDictionary } from "@/lib/i18n";
 import { siteContact } from "@/lib/site";
 
 const contactLinkFocus =
@@ -24,46 +27,43 @@ function LinkedInIcon(props: ComponentPropsWithoutRef<"svg">) {
 
 type ContactIcon = LucideIcon | typeof GitHubIcon | typeof LinkedInIcon;
 
-const afterContactExpectations = [
-  "Primera charla sin compromiso",
-  "Analizo tu operación y te armo una propuesta/presupuesto",
-] as const;
-
-const contactOptions: {
-  label: string;
-  description: string;
-  href: string;
-  icon: ContactIcon;
-  isPrimary?: boolean;
-}[] = [
-  {
-    label: "WhatsApp",
-    description: "¡Charlemos!",
-    href: siteContact.whatsapp,
-    icon: MessageCircle,
-    isPrimary: true,
-  },
-  {
-    label: "Email",
-    description: siteContact.email,
-    href: `mailto:${siteContact.email}`,
-    icon: Mail,
-  },
-  {
-    label: "LinkedIn",
-    description: "Conectemos profesionalmente",
-    href: siteContact.linkedin,
-    icon: LinkedInIcon,
-  },
-  {
-    label: "GitHub",
-    description: "Repositorios de mis proyectos",
-    href: siteContact.github,
-    icon: GitHubIcon,
-  },
-];
-
 export function Contact() {
+  const { contact } = useDictionary();
+
+  const contactOptions: {
+    label: string;
+    description: string;
+    href: string;
+    icon: ContactIcon;
+    isPrimary?: boolean;
+  }[] = [
+    {
+      label: contact.options.whatsapp.label,
+      description: contact.options.whatsapp.description,
+      href: siteContact.whatsapp,
+      icon: MessageCircle,
+      isPrimary: true,
+    },
+    {
+      label: contact.options.email.label,
+      description: siteContact.email,
+      href: `mailto:${siteContact.email}`,
+      icon: Mail,
+    },
+    {
+      label: contact.options.linkedin.label,
+      description: contact.options.linkedin.description,
+      href: siteContact.linkedin,
+      icon: LinkedInIcon,
+    },
+    {
+      label: contact.options.github.label,
+      description: contact.options.github.description,
+      href: siteContact.github,
+      icon: GitHubIcon,
+    },
+  ];
+
   return (
     <section
       id="contacto"
@@ -73,23 +73,19 @@ export function Contact() {
       <div className="grid gap-12 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:gap-16">
         <div className="min-w-0 text-left">
           <h2 id="contact-heading" className="section-title">
-            ¿Tenés un proyecto en mente?
+            {contact.heading}
           </h2>
-          <p className="section-lede">
-            La forma más directa de empezar es por WhatsApp. Si preferís otro
-            canal, también está disponible.
-          </p>
+          <p className="section-lede">{contact.lede}</p>
 
           <div className="mt-10 border-t border-[color:var(--color-rule)] pt-8">
             <p className="text-sm font-medium text-foreground">
-              Después de escribirme
+              {contact.afterHeading}
             </p>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">
-              Charlamos sin vueltas, me contás qué necesitás y en qué etapa está
-              tu negocio.
+              {contact.afterLede}
             </p>
             <ul className="mt-5 max-w-md space-y-3">
-              {afterContactExpectations.map((item) => (
+              {contact.expectations.map((item) => (
                 <li
                   key={item}
                   className="flex items-start gap-3 text-sm leading-relaxed text-muted"
@@ -137,7 +133,7 @@ export function Contact() {
                 <span className="text-left">
                   {isPrimary && (
                     <span className="mb-1 block text-[0.65rem] font-medium uppercase tracking-[0.14em] text-accent">
-                      Canal recomendado
+                      {contact.recommendedChannel}
                     </span>
                   )}
                   <span className="block text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-accent">
